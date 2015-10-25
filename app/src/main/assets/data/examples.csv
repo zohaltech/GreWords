@@ -1,0 +1,322 @@
+Id;VocabularyId;Synonyms;Antonyms
+1;1;decrease, lessen, diminish, reduce, lower, moderate, ease, soothe, relieve, dampen, calm, tone down, alleviate, mitigate, mollify, allay, assuage, palliate, temper, appease, attenuate;grow, amplify, increase, enhance, extend, dilate, sprout, expand
+2;2;exceptional, aberrated, abnormal, anomalous, atypical, especial, exceeding, extraordinaire, extraordinary, freak, odd, peculiar, phenomenal, preternatural, rare, singular, uncommon, uncustomary, unique, unusual, unwonted;common, customary, normal, ordinary, typical, unexceptional, unextraordinary, usual
+3;3;cold storage, deep freeze, doldrums, dormancy, holding pattern, latency, suspended animation, suspense, suspension;under way, continuing, continue, resume
+4;4;run away, escape, bolt, clear out, flee, make off, take flight, take off;abide, remain, stay, stick around
+5;5;self-disciplined, self-denying, restrained, self-restrained, non-indulgent, sober, ascetic, puritanical, spartan, strict, severe;self-indulgent, intemperate, greedy
+6;6;acquiesce, agree, assent, come round, go along with, subscribe;refuse, deny
+7;7;honour, recognition, privilege, approval, admiration, approbation, testimonial, praise, welcome;criticism, correction, harangue, lecture
+8;8;give, grant, tender, present, award, hand, vouchsafe, concede, yield, cede;differ, disagree
+9;9;rebuke, scold, reprove, upbraid, chastise, chide, censure, castigate, lambaste, berate, reproach, lecture, criticize;praise, discourage
+10;10;degrade, debase, spoil, taint, defile, contaminate, pollute, foul, sully;clarify, clean, distill, leach, better, enhance, improve
+11;11;arrival, appearance, emergence, materialization, surfacing, occurrence, dawn, origin, birth, rise, development;departure, disappearance
+12;12;decorative, ornamental, graceful, elegant, exquisite, beautiful, attractive;homely, plain, ugly
+13;13;collection, mass, cluster, lump, clump, pile, heap, bundle, quantity, total, combined, whole, gross, accumulated;uncombined, part, individual, net
+14;14;eagerness, willingness, readiness; enthusiasm, ardour, fervour, keenness, joyousness, liveliness, zeal;;slowness, sluggishness; apathy
+15;15;reduce, ease, relieve, deaden, dull, diminish, lessen, weaken, lighten, attenuate, allay, assuage, palliate, damp, soothe, help, soften, temper, control;harm, hurt, impair, injure; heighten, intensify, sharpen
+16;16;combine, merge, unite, integrate, fuse, blend, mingle, coalesce, consolidate, meld, intermingle, mix, intermix, incorporate, affiliate;;break down, break up, separate, unmix
+17;17;cryptic, dark, deep, murky, mysterious, mystic, nebulous, occult, opaque;unambiguous, clear
+18;18;equivocation, uncertainty, unsureness, doubt, indecision, hesitation, hesitancy, fluctuation, tentativeness;certainty, decisiveness
+19;19;amend, better, enhance, enrich, help, meliorate, perfect, refine, upgrade;damage, harm, hurt, impair, injure, spoil
+20;20;artifact, unusual person;normal
+21;21;comparable, parallel, similar, like, corresponding, related, kindred, matching, cognate, equivalent, symmetrical, homologous;dissimilar, unrelated
+22;22;awlessness, revolution, riot, disorder, confusion, chaos, misrule, disorganization, misgovernment;government, order
+23;23;abnormal, atypical, irregular, aberrant, exceptional, freak, odd, peculiar, unusual, inconsistent;normal, typical, regular
+24;24;hostility, antagonism, animosity, aversion, opposition, enmity, dislike, distaste, hatred, abhorrence, loathing;liking, affinity, rapport
+25;25;unconcern, uninterestedness, unresponsiveness, impassivity, passiveness, detachment, dispassion;enthusiasm, interest, passion
+26;26;placate, pacify, propitiate, palliate, allay, reconcile, win over;provoke, frustrate
+27;27;inform, notify, tell, let know, advise, brief, intimate, update, keep up to speed, enlighten;misinform, mislead
+28;28;approval, acceptance, endorsement, encouragement, recognition, appreciation, support, respect, admiration;criticism
+29;29;seize, commandeer, expropriate, annex, arrogate, sequestrate, take over, assume, secure, acquire, wrest, usurp, claim;lose, renounce
+30;30;natural, naive, simple, innocent, childlike, pure, ingenuous, guileless;scheming, fake, false
+31;31;simple, rigorous, strict, severe, self-disciplined;sybaritic
+32;32;diligent, careful, meticulous, thorough, sedulous, attentive, industrious;idle, inactive, unbusy, unemployed
+33;33;relieve, ease, alleviate, soothe, mitigate, dampen, allay, calm, abate, lull, temper, suppress, smother;intensify, aggravate, exacerbate
+34;34;weakened, reduced, lessened, decreased, diminished, impaired;strengthened, increase
+35;35;bold, daring, fearless, intrepid, brave, unafraid, unflinching, courageous, valiant;timid, polite
+36;36;severe, stern, strict, harsh, unfeeling, cold, frosty, frigid, icy, chilly, unfriendly, formal, grave, serious;genial, gentle, indulgent
+37;37;self-governing, independent, sovereign, free, self-ruling, self-determining, autarchic;dependent, nonautonomous, unfree
+38;38;affirm, allege, assert, claim, avouch, avow, contend, declare, insist, maintain;disprove, rebut, refute; contradict, counter
+39;39;ordinary, common, stock, predictable, overdone, overworked, stale, hack;original
+40;40;benevolent, charitable, altruistic, humane, philanthropic;unkind, mean
+41;41;reinforce, make stronger, boost, fortify, give a boost to;undermine
+42;42;pompous, blustering, ranting, blathering;straightforward
+43;43;coarse, uncouth, rude, discourteous, impolite, ungentlemanly, unladylike, churlish, gruff;refined, sophisticated
+44;44;expand, spring up, shoot up, swell, explode, boom, mushroom, proliferate, snowball, multiply;shrink
+45;45;shine, brighten, rub up or down, buff (up), smooth, glaze;dull
+46;46;prop, support, abutment, shore, pier, reinforcement, stanchion, stay;undermine, weaken
+47;47;loud, noisy, ear-splitting, blaring, booming, thunderous, deafening;harmonious, sweet
+48;48;fickle, inconstant, changeable, variable, unstable, volatile, irregular, inconsistent, fitful, arbitrary;stable, consistent
+49;49;baste, scold, chastise, chew out, flay, hammer;excuse, pardon, spare
+50;50;activator, accelerator, chemical science, chemistry;anticatalyst
+51;51;mordant, acid, alkaline, burning, stinging, acrid, harsh, destructive;kind, gentle, mild
+52;52;end, ending, termination, stopping, halting, ceasing, finish;start, resumption
+53;53;surrender, ceding, conceding, concession, relinquishment, yielding, giving up, grant, bequest;resistance, gain
+54;54;artfulness, cunning, cheating, duping, shadiness, sharpness, guile, guilefulness, hypocrisy, fakery, dirty tricks, scheming, secrecy;sincerity, candidness, openness
+55;55;convincing, compelling, strong, forceful, powerful, potent, weighty;vague, unconvincing
+56;56;equivalent, equal, corresponding, correspondent, comparable, proportionate, proportional;disproportionate
+57;57;collection, compilation, anthology, treasury, digest;expansion, extension, increase
+58;58;willing, acquiescent, agreeable, cooperative, accommodating, compliant, pliant, obedient, conformable, tractable;unwilling
+59;59;acquiescent, amenable, biddable, tractable, gentle, accommodating, cooperative, adaptable;uncontrollable, unmanageable, wild
+60;60;pacifying, pacific, disarming, appeasing, mollifying, peaceable, placatory, propitiatory, soothing;fighting, refusing, stubborn
+61;61;deliberately ignore, not take into consideration, disregard, overlook, forget, wink at, blink at, connive at;condemn, punish
+62;62;amaze, astonish, dumbfound, stagger, surprise, startle, stun, stupefy, daze, nonplus;difference, distinguish, separate
+63;63;expert judge, authority, specialist;ignoramus
+64;64;disagreement, dispute, disputation, argument, variance;agreement
+65;65;controversial, disputable, debatable, disputed, contended, open to question/debate, moot, vexed;nonaggressive, pacific, peaceful
+66;66;remorseful, penitent, regretful, sorry, apologetic, rueful, sheepish, hangdog;unrepentant, defiant
+67;67;meet, intersect, cross, come together, connect, link up, coincide;separate, diverge
+68;68;complicated, complex, involved, intricate, elaborate, impenetrable, serpentine, labyrinthine, tortuous, tangled;simple, straightforward
+69;69;chickenhearted, cowardly, dastardly, gutless, recreant, spineless, unheroic, yellow;brave, daring, fearless
+70;70;chill, discourage,abash, shake, frustrate, unman;encourage, hearten
+71;71;seemliness, decency, decorousness, good taste, correctness;impropriety
+72;72;non-payment, failure to pay, non-remittanc;repayment
+73;73;respect, respectfulness, regard, esteem;disrespect
+74;74;describe, present, outline, depict, portray, represent, characterize;color, distort, twist
+75;75;disparage, attack, speak ill of, abuse, insult, slight, revile, malign, vilify;laud, magnify, praise
+76;76;jeer, laugh at, mock, scout, shoot down;respect, praise
+77;77;imitative, unoriginal, uninventive, non-innovative, unimaginative, uninspired;original
+78;78;dried, dried up, dry, dehydrated, powdered;moist
+79;79;casual, random, aimless, erratic, automatic, unthinking, mechanical, offhand, chaotic, inconsistent, irregular;keen, systematic
+80;80;disincentive, discouragement, dissuasion, damper, brake, curb, check, restraint;incentive, encouragement
+81;81;attack, abuse, broadside, fulmination, condemnation, criticism, reproof, reproval, rebuke, admonishment;approval, blessing
+82;82;division, separation, divorce, split, gulf, chasm;merge
+83;83;shyness, bashfulness, modesty, humility, humbleness, reserve;confidence
+84;84;spread, send out, scatter, disperse;concentrate, collect
+85;85;deviation, detour, diversion, departure, excursus;directness, straightness
+86;86;disillusion, undeceive, correct, wake up, disenchant;dupe, fool
+87;87;selective, judicious, cultivated, cultured, sophisticated, enlightened, sensitive, critical;dull, stupid
+88;88;disagreeing, differing, divergent, discrepant, conflicting, opposite;harmonious, dulcet
+89;89;disgrace, dishonour, damage someone's reputation, reflect badly on, compromise;credit, honor
+90;90;inconsistency, difference, variance, deviation, divergence, disagreement, dissimilarity, mismatch;similarity, correspondence
+91;91;separate, distinct, individual, detached, disconnected, disjunct, disjoined;connected
+92;92;dishonest, insincere, false, lying, untruthful, mendacious;ingenuous, frank
+93;93;unprejudiced, impartial, neutral, non-partisan, uninvolved, objective;caring, sensitive, keen
+94;94;unconnected, disconnected, disunited, discontinuous, fragmented, jumbled, garbled, incoherent, confused;coherent, connected
+95;95;send away, let go, release, free;form, assemble
+96;96;deprecate, depreciate, derogate, diminish,;glorify, praise
+97;97;contrasting, different, differing, dissimilar, unlike;homogeneous
+98;98;pretend, deceive, act, sham, fake, bluff, counterfeit, pose, posture;admit,allow
+99;99;spread, circulate, distribute, disperse, diffuse, proclaim, promulgate, propagate, publicize, communicate;collect, gather
+100;100;cessation, conclusion, end, ending, finish, termination;combination, connection
+101;101;inharmoniousness, discordance, atonality, cacophony;agreement, harmony
+102;102;swell, bloat, bulge, blow up/out, expand, dilate, inflate, enlarge;shrink, contract
+103;103;purify, refine, filter, treat, process;muddy, contaminate
+104;104;separate, part, disunite, fork, branch off, divide, subdivide, split;converge
+105;105;deprive, strip, dispossess, relieve, clear;cover, invest
+106;106;certificate, deed, charter, contract, legal agreement;speech
+107;107;arbitrary,arrogant,assertive, arrogant, overbearing, dictatorial;doubting, flexible
+108;108;asleep, sleeping, slumbering, resting, reposing, drowsing, comatose;awake, active
+109;109;deceive, trick, hoodwink, hoax, swindle, defraud, cheat;cognizant, awareness
+110;110;exuberant, buoyant, cheerful, joyful, cheery, merry, sunny, breezy;depressed
+111;111;wide, broad, extensive, comprehensive, encyclopedic, general, universal, varied, inclusive, indiscriminate, multifaceted, heterogeneous;narrow, dogmatic
+112;112;ability, capability, capacity, potency, puissance, strength;failure, uselessness
+113;113;pertness, boldness, shamelessness, impoliteness, disrespect, bad manners;hesitancy, modesty, shyness
+114;114;death song, funeral song, knell, lament;enjoyment,praise
+115;115;obtain, bring out, draw out, extract, evoke, excite, prompt, generate;forget, ignore
+116;116;decorate, adorn, ornament, dress, dress up, furnish;simplify
+117;117;observed, seen, factual, actual, real, verifiable;theoretical
+118;118;imitate, copy, reproduce, mimic, mirror, echo, follow;abandon, leave
+119;119;aboriginal, autochthonous, born, domestic, endemic, indigenous;nonnative
+120;120;exhaust, tire, fatigue, weary, devitalize, drain, sap, weaken, enfeeble, debilitate, incapacitate;strengthened, liven
+121;121;cause, produce, create, generate, kindle, trigger, induce, inspire, effect, occasion, promote, foster;demolish, destroy
+122;122;increase, add to, intensify, magnify, amplify, inflate, strengthen, supplement, boost, upgrade, raise, lift, escalate, elevate, exalt;diminish
+123;123;transitory, transient, fleeting, passing, momentary, brief, short, cursory, temporary, impermanent;long-lived, permanent
+124;124;calmness, calm, level-headedness, self-possession, self-control, even-temperedness, coolness;anxiety
+125;125;fudge, hedge, pussyfoot, tergiversate, waffle, weasel;face, meet
+126;126;learned, scholarly, knowledgeable, lettered, cultured, cultivated, civilized, intellectual;ignorant, ill-educated
+127;127;abstruse, obscure, arcane, difficult, hard, puzzling;simple, familiar
+128;128;accolade, speech of praise, panegyric, paean, encomium, tribute, testimonial, compliment;attack
+129;129;understatement, underplaying, softening, politeness, genteelism;directness, straightforwardness
+130;130;aggravate, make worse, worsen, inflame, compound;calm, reduce
+131;131;absolve, acquit, clear, exonerate, vindicate;blame
+132;132;need, demand, requirement, want;easiness, ordinariness
+133;133;calculation, computation,estimate;theoretical
+134;134;humorous, joking, jocular, smart;serious
+135;135;ease, expedite, forward, further, simplify, smooth, speed, speed up;block, delay
+136;136;false, untrue, wrong, incorrect, faulty, flawed, inaccurate, inexact;true, correct
+137;137;silly, foolish, stupid, inane, childish, idiotic, brainless, mindless;intelligent
+138;138;slaver, slobber; endear, ingratiate;brave
+139;139;apt, well chosen, well expressed, well put, choice, fitting, suitable, appropriate, apposite, pertinent, germane;unsuitable
+140;140;passion, ardour, intensity, zeal, vehemence, enthusiasm, excitement, animation;coolness
+141;141;banner, standard, ensign, pennant, pennon;increase, rise
+142;142;emergent, arising, sunrise, dawning, beginning;mature
+143;143;defy, gibe, jeer, laugh at, outrage, scoff, scorn, spurn;honor,respect
+144;144;instigate, incite, provoke, agitate, urge, actuate, initiate, generate, cause, prompt, start;allay, calm
+145;145;avert, preclude, obviate, prevent, intercept, check, block, hinder, impede, obstruct;unready
+146;146;thriftiness, carefulness, scrimping and saving, conservation, good management;wastefulness
+147;147;fruitless, vain, pointless;useful, fruitful
+148;148;deny, dispute, argue with, contradict, challenge, oppose, contest, counter;confirm
+149;149;talkative, voluble, verbose, chatty, gossiping, babbling, expansive, forthcoming, conversational, communicative;concise
+150;150;provoke, stimulate, motivate, excite, inflame, work/fire up, impel, pressure, prompt;diversion
+151;151;pompous, bombastic, pretentious, ostentatious, high-flown, high-sounding;concise
+152;152;social, company-loving, companionable, convivial, clubbable;reserved
+153;153;artless, ingenuous, open, honest, sincere, genuine, innocent, unsophisticated, trustful;cunning
+154;154;unsuspecting, unsuspicious, unwary, unguarded, unsceptical, ingenuous, naive, innocent, simple, inexperienced;cynical, suspicious
+155;155;reading out, screed, sermon, speech;be quiet
+156;156;similar, comparable, equivalent, like, analogous;different, dissimilar
+157;157;exaggeration, overstatement, magnification, amplification, embellishment, excess, overkill;understatement
+158;158;critical, sceptical, questioning;conformist
+159;159;worship, adoring, glorification, lionizing, love, admiration;dislike
+160;160;unchangeable, fixed, set, rigid, inflexible;variable
+161;161;damage, harm, diminish, reduce, weaken, lessen, decrease, blunt;improve, enhance
+162;162;expressionless, unexpressive, blank, deadpan, dispassionate;expressive
+163;163;hinder, obstruct, hamper, handicap, delay, disrupt, retard, slow down, brake, fetter, cramp;facilitate
+164;164;watertight, waterproof, damp-proof, water-resistant, water-repellent;open, unclosed
+165;165;composed, collected, calm, self-controlled, poised, tranquil, serene, relaxed, easy-going;excitable
+166;166;inflexible, mulish, stubborn, unbending, uncompromising, unrelenting;merciful, nice
+167;167;indirect, inferred, understood, hinted, suggested;direct
+168;168;buckle, crumple, founder, go out, implode, shatter, smash, tumble, yield;rise
+169;169;accidentally, by accident, unintentionally, unwittingly;deliberately
+170;170;immature, imperfect, shapeless, unfinished, unformed, unshaped;developed, grown
+171;171;dissonance, incompatibility, inconsistency, difference, disparity, discrepancy;appropriateness
+172;172;absorb, include, subsume, assimilate, integrate, take in, swallow up;separate, diverge
+173;173;undetermined, undefined, unspecified, unfixed, unsettled, unknown, unpredictable;definite, clear
+174;174;poverty, impecuniosity, destitution, pennilessness, privation;wealth
+175;175;lazy, idle, loafing, apathetic, inactive, inert, slow, dull;energetic
+176;176;unmoving, motionless, immobile, still, static, dormant, sleeping;moving, active
+177;177;naive, innocent, simple, childlike, trusting, trustful, unsceptical;disingenuous, artful
+178;178;intrinsic, innate, immanent, built-in, inborn, ingrained, deep-rooted;acquired, alien
+179;179;harmless, safe, non-dangerous, non-poisonous, non-toxic, innocent;harmful
+180;180;unconscious, senseless, inert, stupefied, stunned;conscious, responsive
+181;181;imply, suggest, hint, intimate, whisper, indicate;conceal, hide
+182;182;tasteless, flavourless, unflavoured, bland, weak, thin, watery;tasty
+183;183;myopia, illiberality, intolerance, prejudice, bias, partisanship, xenophobia, discrimination;breadth
+184;184;unmanageable, uncontrollable, ungovernable, out of control;manageable
+185;185;implacability, inflexibleness, mulishness, obduracy;conforming, cooperation
+186;186;flood, deluge, overflow, overrun, swamp, submerge, engulf, drown, immerse, cover;underwhelm
+187;187;harden, toughen, season, temper, condition;sensible
+188;188;irritable, snappy, snappish, tetchy, testy, touchy, edgy, crabby;cheerful, happy
+189;189;indecisive, hesitant, tentative, nervous, weak;definite, determined
+190;190;route, journey, way, road, path, course;disorganization
+191;191;brief, concise, short, economical, elliptical, incisive;verbose
+192;192;collapse, exhaustion, frazzle, lassitude, prostration, tiredness, weariness;energy
+193;193;dormant, quiescent, inactive, untapped, unused;active
+194;194;praise, extol, hail, applaud, acclaim, commend, admire;condemn, criticize
+195;195;sluggish, inert, inactive, slow, torpid, lifeless, dull;energetic, animated
+196;196;carefreeness, cheerfulness, humour, comedy, funniness, joviality, joking;seriousness
+197;197;record, register, logbook, journal, diary, chronicle, daybook;delete, erase
+198;198;talkative, garrulous, voluble, wordy, verbose;quiet, shy
+199;199;intelligible, comprehensible, understandable, coherent, communicative;unclear, ambiguous
+200;200;shining, bright, brilliant, radiant, dazzling, glowing;dark
+201;201;humanity, nobility, chivalry, kindness, munificence;meanness, selfishness
+202;202;dodger, goof-off, idler, loafer, shirker;aggressor, hero
+203;203;ductile, plastic, pliant, soft, workable, shapable;hard
+204;204;individualist, nonconformist, unconventional person, original, outsider;conformist
+205;205;lying, untruthful, dishonest, deceitful, false, dissembling;truthful
+206;206;transformation, mutation, change, conversion, variation, modification;stagnation
+207;207;careful, conscientious, diligent, ultra-careful, scrupulous, punctilious;careless
+208;208;cynic, sceptic, churl, grouch, grump, recluse, hermit;idealist
+209;209;reduce, diminish, lessen, weaken, ease, soothe, relieve, help, soften, temper;increase, intensify
+210;210;allay, assuage, alleviate, mitigate, ease, lessen, reduce, moderate;aggravate
+211;211;gloomy, bad-tempered, moody, unsmiling, humourless, unresponsive, scowling, glowering, unhappy;cheerful, happy
+212;212;dull, boring, tedious, tiresome, unexciting, routine, ordinary, everyday, common;spiritual
+213;213;deny, dispute, contradict, refute, rebut, discredit, disclaim, reject, repudiate;confirm
+214;214;beginner, learner, novice, newcomer, raw recruit, initiate;expert
+215;215;affectless, callous, heartless, indurate, inhuman, inhumane;sensitive, softhearted
+216;216;beggarly, compliant, deferential, respectful, slavish, sneaking, subordinate;confident
+217;217;prevent, remove, eliminate, foreclose, avoid, avert;allow, help
+218;218;overbearing, dictatorial, domineering, interfering, forward, opinionated;modest, shy
+219;219;burdensome, heavy, inconvenient, troublesome, awkward, crushing;easy, effortless
+220;220;vilification, abuse, criticism, denigration, attack;praise
+221;221;swing, sway, swing from side to side, swing back and forth, vibrate;remain, stay
+222;222;showy, pretentious, extravagant, fancy, affected, tasteless;plain
+223;223;perfect example, archetype, ideal, standard, prototype, apotheosis;demon, devil
+224;224;supporter, follower, adherent, devotee, champion, backer, fan, zealot, disciple;disinterested
+225;225;morbid, diseased, disinfectant, medicating;proper, seemly
+226;226;absence, omission, meagerness, poorness, skimpiness, necessity, need;plenty, sufficiency
+227;227;academic, doctrinaire, donnish, dull, formal, learned, particular;imprecise, informal
+228;228;devices, genius, habitude, leaning, tendency;dislike, hate
+229;229;indigence, need, neediness, destitution, hardship, beggary, insolvency, ruin;wealth, affluence
+230;230;continuing, endless, permanent, constant, continual, unfailing, unchanging;changing
+231;231;faithless, unfaithful, false, untrue, dishonest, untrustworthy;faithful, loyal
+232;232;careless, cursory, desultory;careful
+233;233;porous, pervious, penetrable, spongy, absorbent, absorptive;impermeable, watertight
+234;234;penetrating, omnipresent, widespread, general, common, universal, epidemic;limited, narrow
+235;235;cool, deadpan, disinterested, dull, emotionless, indifferent, passionless, passive;enthusiastic, excited
+236;236;devotion, religiousness, religion, holiness, devotion to God, faith, religious duty;atheism, godlessness
+237;237;appease, assuage, gentle, mollify, propitiate;upset, worry
+238;238;softness, pliancy, pliability, flexibility, suppleness, ductility;rigidity
+239;239;routine, inanity; generality, generalization, simplification, adage;nuance, profundity
+240;240;flood, glut, many, much, overflow, overmuch, plenty;few, little
+241;241;permeable, penetrable, pervious;close, compact
+242;242;idealless, grounded, logical, rational, sane, sensible, mistrustful, suspicious;fanciful, fantastic
+243;243;unsure, risky, hazardous, dangerous, unsafe, doubtful, delicate, tricky, problematic;safe, secure
+244;244;cause, spark, provoke, accelerate, expedite, speed up, advance, quicken;slow, wait
+245;245;forerunner, predecessor, forefather, father, parent, antecedent, ancestor, forebear, progenitor;sequel
+246;246;bold, familiar, forward, free, immodest, overfamiliar, presuming;humble, modest
+247;247;dupe, fool, gull, hoax, hoodwink, kid, snow, take in, trick;validate, confirm
+248;248;perfect, clean, fresh, new, virgin, pure, unused;dirty
+249;249;decency, morality, truthfulness, honour, justice, fairness, equity;dishonesty, unfairness
+250;250;difficult, hard, problematical, tricky, awkward, controversial, complicated, complex, involved;easy, simple
+251;251;wasteful, extravagant, thriftless, excessive, irresponsible;economical
+252;252;great, extreme, sincere, earnest, deep, deepest;mild
+253;253;extortionate, excessive, exorbitant, preposterous, outrageous, unreasonable, impossible;unlimited
+254;254;grow rapidly, multiply, mushroom, snowball, escalate, rocket;decrease
+255;255;tendency, inclination, readiness, susceptibility, liability, disposition;dislike, hate
+256;256;appease, mollify, pacify, conciliate, soothe, calm, humour, satisfy;irritate, provoke
+257;257;respectability, decency, correctness, appropriateness, courtesy, politeness, civility, modesty;unsuitableness, wrong
+258;258;ban, bar, enjoin, interdict, outlaw, prohibit;admit, allow, include
+259;259;change, alter, modify, pronounce, label, judge;unlimited, unqualified
+260;260;protest, query, argument, exception, moan, grumble, grouse, cavil;agreement, approval
+261;261;inactive, inert, latent, fallow, passive, idle, at rest, inoperative, deactivated;active
+262;262;change, alter, modify, weaken, thin, select, private;commonplace
+263;263;contrary, intractable, opposing, resisting, undisciplined, unwilling, wild;obedient, passive
+264;264;renounce, disavow, deny, abjure, abandon;claim, accept
+265;265;abstruse, profound, secret, difficult, complex;easy, simple
+266;266;obstinate, stubborn, mulish, obdurate, headstrong, intractable, unmanageable, ungovernable;obedient, manageable
+267;267;disprove, rebut, confute, demolish, explode, invalidate;confirm
+268;268;downgrade, lower, lower in rank, put down, move down;upgrade, promote
+269;269;rebuke, reprove, scold, reprimand, admonish, berate, lecture, criticize;praise
+270;270;rogue, rascal, scoundrel, villain, profligate, degenerate, debauchee;virtuous, principled
+271;271;reject, renounce, abandon, forswear, abjure, disavow, discard, disown;admit, approve
+272;272;revoke, cancel, reverse, override, quash, abolish, withdraw;allow, approve
+273;273;intention, resolve, decision, intent, aim, aspiration, design, purpose, object, plan;irresolution, half-heartedness
+274;274;settle, sort out, solve, deal with, rectify, reconcile;indecision
+275;275;reserved, withdrawn, diffident, shy, modest, unassuming, undemonstrative;expansive, garrulous
+276;276;respectful, worshipping, worshipful, adoring, loving, admiring, devoted, dutiful;irreverent
+277;277;philosopher, scholar, thinker, savant, solomon, nestor, solon;fool
+278;278;healthy, healthful, beneficial, wholesome, salutary;unhealthy
+279;279;authorization, permission, warrant, agreement, confirmation, clearance, acceptance, allowance;prohibition, ban
+280;280;fill, fully satisfy, sate;starve, dissatisfy
+281;281;soak, drench, waterlog, wet through, wet;dry out
+282;282;relish, enjoy, appreciate, delight in, luxuriate in, drool over;dislike, tastelessness
+283;283;bury, cache, conceal, ensconce, secrete;display, exhibit
+284;284;piece, fragment, bit, sliver, splinter, shiver, chip, particle, scrap;whole
+285;285;cynic, doubter, questioner, scoffer, agnostic;believer
+286;286;concerned, caring, attentive, mindful, interested, considerate, thoughtful;unafraid, unworried
+287;287;somnolent, sedative, calmative, tranquillizing, narcotic, opiate, drowsy, sleepy, somniferous;awake, conscious
+288;288;misleading, deceptive, false, fallacious, sophistic;real, true
+289;289;range, gamut, sweep, scope, span;extreme
+290;290;occasional, infrequent, irregular, periodic, scattered, isolated, odd, uneven;steady, continuous
+291;291;shame, disgrace, dishonour;honour, credit
+292;292;hitch, duty, job, stint, tenure, tour, cycle, span, spell;spend
+293;293;specify, set down, set out, lay down, set forth, state clearly;surrender, yield
+294;294;dull, impassive, phlegmatic, unemotional, calm, placid, unexcitable;imaginative
+295;295;command, court order, decree, mandate, summons, warrant;cancel, stop
+296;296;abate, calm, diminish, decline, weaken, fade, wane, terminate;intensify, worsen
+297;297;prove, support, uphold, justify, verify, authenticate, confirm, endorse, establish, demonstrate;disprove, refute
+298;298;replace, supplant, remove, override, substitute, supersede;accept, submit
+299;299;belief, suspicion, speculation, hypothesis, guess, feeling, assumption;proof, reality
+300;300;implicit, understood, implied, inferred, hinted, suggested, insinuated;explicit, stated
+301;301;digressive, divergent, diverging, extraneous, unrelated;central, crucial
+302;302;fine, thin, slender, delicate, fragile;thick
+303;303;anger, attack, censure, denunciation, dispute, vituperation;calm
+304;304;inactivity, slowness, heaviness, laziness, apathy, fatigue, sleepiness;energy, animation
+305;305;twisting, bending, looping, zigzag, twisty, circuitous, mazy;straight
+306;306;controllable, manageable, governable, yielding, compliant;unmanageable
+307;307;offence, crime, sin, wrong, mischief, wickedness, misbehaviour;obedience
+308;308;aggressiveness, fight, quarrelsomeness, attack;consideration
+309;309;alternate, fluctuate, hesitate, oscillate, seesaw, stagger, swing, waver, whiffle;remain, stay
+310;310;revere, respect, worship, adulate, idolize, exalt, honour, esteem;hate, dislike
+311;311;accurate, correct, exact, realistic, authentic, faithful, close, strict;untrue, dishonest
+312;312;wordy, talkative, voluble, expansive, babbling;concise
+313;313;workable, feasible, practical, manageable, possible, realizable, reasonable, realistic, suitable;impracticable
+314;314;sticky, gummy, gluey, adhesive, adherent;watery
+315;315;insulting, reproachful, reviling, rude, scolding;kind, respectful
+316;316;tense, strained, uneasy, uncomfortable, charged, explosive, turbulent;stable, calm
+317;317;justify, vindicate, call for, sanction, validate;unreasonable
+318;318;cautious, careful, circumspect, chary, alert;trustful
+319;319;confusion, jumble, tangle, clutter, mess, flurry, rush, mass;peace
+320;320;fanciful, playful, mischievous, waggish, fantastic, unusual, curious, droll;reasonable, sensible
+321;321;fanatic, enthusiast, radical, diehard, activist, militant;moderate
