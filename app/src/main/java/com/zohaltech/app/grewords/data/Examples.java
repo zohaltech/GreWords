@@ -22,8 +22,8 @@ public class Examples {
                                       Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                                       VocabularyId + " INTEGER , " +
             //                                      Ordinal + " INTEGER , " +
-                                      Antonyms + " VARCHAR(1024) , " +
-                                      Synonyms + " VARCHAR(1024));";
+                                      Synonyms + " VARCHAR(1024) , " +
+                                      Antonyms + " VARCHAR(1024));";
 
     static final String DropTable = "Drop Table If Exists " + TableName;
 
@@ -44,8 +44,9 @@ public class Examples {
                 do {
                     Example example = new Example(cursor.getInt(cursor.getColumnIndex(Id)),
                                                   cursor.getInt(cursor.getColumnIndex(VocabularyId)),
-                                                  cursor.getString(cursor.getColumnIndex(Antonyms)),
-                                                  cursor.getString(cursor.getColumnIndex(Synonyms)));
+                                                  cursor.getString(cursor.getColumnIndex(Synonyms)),
+                                                  cursor.getString(cursor.getColumnIndex(Antonyms)));
+
 
                     examples.add(example);
                 } while (cursor.moveToNext());
