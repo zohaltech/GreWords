@@ -20,11 +20,11 @@
             android:orientation="vertical">
 
             <widgets.LatinTextView
+                android:id="@+id/txtWelcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="Welcome to GRE Preparation Vocabs"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/primary"/>
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="در این اپلیکیشن ساده و جذاب قرار است پرکاربردترین لغات و اصطلاحاتی که در موضوعات مختلف استفاده می ‌شوند را یاد بگیرید که در این برنامه به آن ها Theme میگوییم."
+                    android:text="کتاب Absolutely Essential Words 504 از معروف ترین کتاب های آموزش لغات انگلیسی و یکی از منابع لازم و ضروری برای داوطلبان شرکت در آزمون‌های بین‌المللی و همچنین داوطلبان آزمون کارشناسی ارشد است و همچنین یادگیری این لغات ، نقطه شروع بسیار خوبی برای یادگیری زبان انگیسی است."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="برای شروع یکی از Theme ها را انتخاب کنید. هیچگونه وابستگی بین Theme ها وجود ندارد ولی پیشنهاد میکنیم آنها را به ترتیبی که تعبیه شده مطالعه نمایید."
+                    android:text="اپلیکیشن های فراوانی برای یادگیری لغات عرضه شده اند و احتمالا بسیار پیش آمده است که این برنامه ها را نصب کرده اید و فرصت نمی کنید از آنها استفاده کنید و به دست فراموشی سپرده می شوند!"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 
@@ -74,7 +74,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="آموزش هر واژه شامل تعاریف انگلیسی و فارسی بهمراه مثال‌ها و نکات مربوط برای درک کاربردهای آن می ‌باشد."
+                    android:text="تمایز این برنامه با برنامه های مشابه قابلیت زمان بندی برای یادگیری لغات است.
+بدین ترتیب که برنامه، یک Scheduler در اختیار شما قرار میدهد و شما میتوانید زمانهایی که میخواهید لغات به شما یاد آوری شوند را تنظیم کنید، تعداد لغاتی که در روز باید نمایش داده شوند را انتخاب کرده و ساعت شروع و فاصله بین یادآوری ها رو تنظیم کنید."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 
@@ -91,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="دسته بندی موضوعی لغات، به تقویت مهارتهای Speaking و Writing کمک شایانی می کند."
+                    android:text="به این صورت در زمان های تعیین شده، لغات در نوار اعلان به صورت Notification، برای شما یادآوری می شوند و میتوانید به مطالعه لغت و مثالهای آن بپردازید. همچنین میتوانید انتخاب کنید که در چه روزهایی از هفته این یادآوری ها انجام شوند و امکان متوقف کردن و شروع دوباره این زمانبندی نیز وجود دارد."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 
@@ -108,24 +109,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="متد آموزشی به این گونه است که هر Theme به چندین روز تقسیم شده است و برای هر روز 6 واژه و اصطلاح تعیین شده است. برای پیروی از این متد آموزشی، میبایست هر روز و یا یک روز در میان، 6 لغت از یک تم را با یک فاصله زمانی و نه پشت سر هم مطالعه کنید."
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/primary_text"/>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="10dp">
-
-                <widgets.PersianTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:padding="10dp"
-                    android:text="آموزش خودکار: برای سادگی روند یادگیری امکانی در برنامه تعبیه شده است که در آن شما میتوانید روزهای مطالعه، ساعت شروع و فاصله زمانی بین یادآوری را تنظیم کنید، با این کار لغت ها به صورت خودکار و در زمان های تعیین شده به شما یادآوری می شوند و در نوار اعلان نمایش داده می شوند."
+                    android:text="این برنامه به شما کمک می کند که در حین مشغله و کارهای روزمره نیز از یادگیری زبان غافل نمانید و با بازه زمانی که تعیین میکنید به تناوب لغات از طریق برنامه به شما یادآوری میشود با برنامه ریزی و یادآوری تعدادی لغت در روز ظرف مدت کوتاهی مجموعه لغات دسته بندی شده و پرکاربردی یاد خواهید گرفت و دامنه لغات خود را افزایش خواهید داد."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 

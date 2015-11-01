@@ -33,7 +33,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Example example = examples.get(position);
         holder.txtExample.setText(example.getSynonyms());
-        holder.txtAntonyms.setText(example.getAntonyms());
+        holder.txtOpposites.setText(example.getOpposites());
     }
 
     @Override
@@ -43,12 +43,12 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtExample;
-        public TextView txtAntonyms;
+        public TextView txtOpposites;
 
         public ViewHolder(View view) {
             super(view);
             txtExample = (TextView) view.findViewById(R.id.txtExample);
-            txtAntonyms = (TextView) view.findViewById(R.id.txtAntonyms);
+            txtOpposites = (TextView) view.findViewById(R.id.txtOpposites);
         }
     }
 }

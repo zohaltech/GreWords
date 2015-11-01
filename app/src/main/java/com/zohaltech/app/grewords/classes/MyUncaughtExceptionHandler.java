@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-public class MyUncaughtExceptionHandler implements java.lang.Thread.UncaughtExceptionHandler {
+public class MyUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
     public MyUncaughtExceptionHandler() {
     }
 
@@ -30,7 +30,7 @@ public class MyUncaughtExceptionHandler implements java.lang.Thread.UncaughtExce
 
     private static void writeToFile(String errorText) {
         try {
-            File file = new File(Environment.getExternalStorageDirectory(), "grewords_log.txt");
+            File file = new File(Environment.getExternalStorageDirectory(), "essentialwords_log.txt");
             if (!file.exists()) {
                 // file.mkdirs();
                 file.createNewFile();

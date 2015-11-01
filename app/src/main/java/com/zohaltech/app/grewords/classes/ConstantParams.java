@@ -1,6 +1,5 @@
 package com.zohaltech.app.grewords.classes;
 
-
 import com.zohaltech.app.grewords.R;
 
 public final class ConstantParams {

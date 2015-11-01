@@ -2,7 +2,7 @@ package com.zohaltech.app.grewords.entities;
 
 
 public class Note {
-    private int    id;
+    private long    id;
     private int    vocabularyId;
     private int    ordinal;
     private String Description;
@@ -18,11 +18,11 @@ public class Note {
         setDescription(description);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

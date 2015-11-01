@@ -3,23 +3,18 @@ package com.zohaltech.app.grewords.entities;
 public class Example {
     private int    id;
     private int    vocabularyId;
-//    private int    ordinal;
-
-
-
     private String synonyms;
-    private String antonyms;
+    private String opposites;
 
-    public Example(int id, int vocabularyId,String synonyms, String antonyms) {
-        this(vocabularyId, synonyms ,antonyms);
+    public Example(int id, int vocabularyId,String synonyms, String opposites) {
+        this(vocabularyId, synonyms ,opposites);
         this.id = id;
     }
 
-    public Example(int vocabularyId,String synonyms, String antonyms) {
+    public Example(int vocabularyId,String synonyms, String opposites) {
         setVocabularyId(vocabularyId);
-//        setOrdinal(ordinal);
         setSynonyms(synonyms);
-        setAntonyms(antonyms);
+        setOpposites(opposites);
     }
     public String getSynonyms() {
         return synonyms;
@@ -44,12 +39,11 @@ public class Example {
         this.vocabularyId = vocabularyId;
     }
 
-
-    public String getAntonyms() {
-        return antonyms;
+    public String getOpposites() {
+        return opposites;
     }
 
-    public void setAntonyms(String english) {
-        this.antonyms = english;
+    public void setOpposites(String opposites) {
+        this.opposites = opposites;
     }
 }

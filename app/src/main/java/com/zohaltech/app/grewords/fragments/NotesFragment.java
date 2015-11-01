@@ -110,7 +110,9 @@ public class NotesFragment extends Fragment {
                     public void onClick(View v) {
                         if (edtNote.getText().toString().trim().length() > 0) {
                             Note note = new Note(vocabId, 1, edtNote.getText().toString());
-                            if (Notes.insert(note) > 0) {
+                            long id = Notes.insert(note);
+                            if (id > 0) {
+                                note.setId(id);
                                 notes.add(note);
                                 adapter.notifyDataSetChanged();
                             } else {
@@ -134,9 +136,5 @@ public class NotesFragment extends Fragment {
         });
 
         return view;
-    }
-
-    private void showNoteDialog() {
-
     }
 }

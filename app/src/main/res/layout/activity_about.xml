@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_gre"/>
+            android:src="@drawable/ic_app_about"/>
 
         <widgets.LatinTextView
             android:layout_width="wrap_content"
