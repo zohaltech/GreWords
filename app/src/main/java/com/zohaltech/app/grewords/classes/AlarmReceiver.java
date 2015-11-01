@@ -9,12 +9,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
+import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.activities.VocabularyDetailsActivity;
 import com.zohaltech.app.grewords.data.SystemSettings;
 import com.zohaltech.app.grewords.entities.SystemSetting;
 import com.zohaltech.app.grewords.serializables.Reminder;
-
-import com.zohaltech.app.grewords.R;
 
 public class AlarmReceiver extends BroadcastReceiver
 {
@@ -41,7 +40,7 @@ public class AlarmReceiver extends BroadcastReceiver
         //resultIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         resultIntent.putExtra(VocabularyDetailsActivity.VOCAB_ID, reminder.getVocabularyId());
 
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(context, reminder.getVocabularyId() , resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(context, reminder.getVocabularyId(), resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(resultPendingIntent);
 
         SystemSetting setting = SystemSettings.getCurrentSettings();
@@ -53,7 +52,7 @@ public class AlarmReceiver extends BroadcastReceiver
             notification.sound = Uri.parse(setting.getRingingToneUri());
         }
         //App.notificationManager.notify((int) reminder.getTime().getTime(), builder.build());
-        App.notificationManager.notify(reminder.getVocabularyId(), notification);
+        App.notificationManager.notify((int)(reminder.getTime().getTime()), notification);
 
         ReminderManager.setLastReminder(reminder);
         ReminderManager.registerNextReminder(reminder.getVocabularyId(), reminder.doesTriggersNext());

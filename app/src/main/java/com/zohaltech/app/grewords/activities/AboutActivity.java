@@ -80,15 +80,7 @@ public class AboutActivity extends EnhancedActivity {
         btnRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(App.marketPollIntent);
-                intent.setData(Uri.parse(App.marketPollUri));
-                intent.setPackage(App.marketPackage);
-                if (!myStartActivity(intent)) {
-                    intent.setData(Uri.parse(App.marketWebsiteUri));
-                    if (!myStartActivity(intent)) {
-                        MyToast.show(String.format(getResources().getString(R.string.could_not_open_market), App.marketName, App.marketName), Toast.LENGTH_SHORT);
-                    }
-                }
+               Helper.rateApp(AboutActivity.this);
             }
         });
 

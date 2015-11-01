@@ -15,14 +15,14 @@ public class Examples {
     static final String VocabularyId = "VocabularyId";
     //    static final String Ordinal      = "Ordinal";
     static final String Synonyms     = "Synonyms";
-    static final String Antonyms     = "Antonyms";
+    static final String Opposites    = "Opposites";
 
 
     static final String CreateTable = "CREATE TABLE " + TableName + " ( " +
                                       Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                                       VocabularyId + " INTEGER , " +
-            //                                      Ordinal + " INTEGER , " +
-                                      Antonyms + " VARCHAR(1024) , " +
+                                      //                                      Ordinal + " INTEGER , " +
+                                      Opposites + " VARCHAR(1024) , " +
                                       Synonyms + " VARCHAR(1024));";
 
     static final String DropTable = "Drop Table If Exists " + TableName;
@@ -44,7 +44,7 @@ public class Examples {
                 do {
                     Example example = new Example(cursor.getInt(cursor.getColumnIndex(Id)),
                                                   cursor.getInt(cursor.getColumnIndex(VocabularyId)),
-                                                  cursor.getString(cursor.getColumnIndex(Antonyms)),
+                                                  cursor.getString(cursor.getColumnIndex(Opposites)),
                                                   cursor.getString(cursor.getColumnIndex(Synonyms)));
 
                     examples.add(example);
@@ -77,7 +77,7 @@ public class Examples {
         values.put(VocabularyId, example.getVocabularyId());
 //        values.put(Ordinal, example.getOrdinal());
         values.put(Synonyms, example.getSynonyms());
-        values.put(Antonyms, example.getAntonyms());
+        values.put(Opposites, example.getOpposites());
 
         return values;
     }

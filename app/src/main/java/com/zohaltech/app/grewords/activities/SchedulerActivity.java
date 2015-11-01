@@ -51,25 +51,23 @@ public class SchedulerActivity extends EnhancedActivity
     AppCompatSpinner spinnerWordsPerDay;
     AppCompatSpinner spinnerStartLesson;
 
-    Button btnStart;
-    Button btnStop;
-    Button btnPause;
-    Button btnRestart;
-    Button btnStartTime;
+    Button       btnStart;
+    Button       btnStop;
+    Button       btnPause;
+    Button       btnRestart;
+    Button       btnStartTime;
     LinearLayout layoutRingtone;
-    Button btnSelectTone;
+    Button       btnSelectTone;
 
     TextView txtStatus;
 
     @Override
-    protected void onCreated()
-    {
+    protected void onCreated() {
         setContentView(R.layout.activity_scheduler);
         initialise();
     }
 
-    private void initialise()
-    {
+    private void initialise() {
         //edtStartVocabularyNo = (EditText) findViewById(R.id.edtStartVocabularyNo);
         //edtAlarmIntervals = (EditText) findViewById(R.id.edtAlarmIntervals);
         spinnerIntervals = (AppCompatSpinner) findViewById(R.id.spinnerIntervals);
@@ -239,10 +237,6 @@ public class SchedulerActivity extends EnhancedActivity
 
         bind();
 
-        settings = ReminderManager.getReminderSettings();
-        Date time = settings.getReminder().getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE HH:mm", Locale.getDefault());
-        MyToast.show("First vocabulary will be notified on " + sdf.format(time), Toast.LENGTH_LONG);
     }
 
     private void bind()
@@ -262,6 +256,16 @@ public class SchedulerActivity extends EnhancedActivity
         {
             btnStop.setVisibility(View.VISIBLE);
             btnPause.setVisibility(View.VISIBLE);
+
+            if (settings.getReminder() != null)
+            {
+                Reminder reminder = settings.getReminder();
+                if (reminder.getTime() != null)
+                {
+                    SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM HH:mm", Locale.getDefault());
+                    MyToast.show("Next alarm: " + sdf.format(reminder.getTime().getTime()), Toast.LENGTH_LONG);
+                }
+            }
         }
         else if (settings.getStatus() == ReminderSettings.Status.PAUSE)
         {

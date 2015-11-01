@@ -8,7 +8,7 @@ import com.zohaltech.app.grewords.serializables.ReminderSettings;
 
 import java.util.ArrayList;
 
-public class LearningStatus {
+public class  LearningStatus {
     private int vocabIndex;
     private int progress;
     private int vocabCount;
@@ -30,11 +30,20 @@ public class LearningStatus {
                 Vocabulary currentVocab = Vocabularies.select(currentVocabId);
                 assert currentVocab != null;
 
-                // int vocabIndex = vocabularies.indexOf(currentVocab) + 1;
-                int vocabIndex = indexOf(currentVocab, vocabularies) + 1;
+                int vocabIndex = 0;
+                if (currentVocab.getLesson() != lesson) {
+                    for (Vocabulary vocabulary : vocabularies) {
+                        if (vocabulary.getLearned())
+                            vocabIndex++;
+                    }
 
-                if (settings.getStatus() == ReminderSettings.Status.FINISHED ||
-                    currentVocab.getLesson() > lesson) {
+                } else
+                    vocabIndex = indexOf(currentVocab, vocabularies) + 1;
+
+                // int vocabIndex = vocabularies.indexOf(currentVocab) + 1;
+                // int vocabIndex = indexOf(currentVocab, vocabularies) + 1;
+
+                if (settings.getStatus() == ReminderSettings.Status.FINISHED) {
                     learningStatus.setProgress(100);
                     learningStatus.setVocabIndex(vocabCount);
                     learningStatus.setVocabCount(vocabCount);

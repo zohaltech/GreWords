@@ -80,9 +80,9 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
         notes = Notes.getNotes(vocabularyId);
 
         ArrayList<String> tabTitles = new ArrayList<>();
-        tabTitles.add("Meaning");
-        tabTitles.add("Examples");
-        tabTitles.add("Notes");
+        tabTitles.add("MEANING");
+        tabTitles.add("SYN/OPP");
+        tabTitles.add("NOTES");
 
         descriptionPagerAdapter = new DescriptionPagerAdapter(getSupportFragmentManager(), tabTitles, vocabularyId);
         pagerCategories.setAdapter(descriptionPagerAdapter);

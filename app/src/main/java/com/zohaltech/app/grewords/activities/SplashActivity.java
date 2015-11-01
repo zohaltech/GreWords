@@ -7,10 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-
-import com.zohaltech.app.grewords.classes.App;
-
 import com.zohaltech.app.grewords.R;
+import com.zohaltech.app.grewords.classes.App;
 
 public class SplashActivity extends AppCompatActivity {
 

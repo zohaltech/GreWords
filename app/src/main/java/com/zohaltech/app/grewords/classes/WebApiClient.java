@@ -18,8 +18,8 @@ import java.net.URL;
 
 
 public class WebApiClient {
-    private static final int    APP_ID              = 4;
-    private static final String HOST_URL = App.context.getString(R.string.host_name);
+    private static final int    APP_ID              = 3;
+    private static final String HOST_URL            = App.context.getString(R.string.host_name);
     private static final String HOST_UPDATE         = App.context.getString(R.string.host_update);
     private static final String UPDATE_QUERY_STRING = App.context.getString(R.string.update_query_string);
 
@@ -34,7 +34,7 @@ public class WebApiClient {
                     if (!setting.getInstalled()) {
                         if (ConnectionManager.getInternetStatus() == ConnectionManager.InternetStatus.Connected) {
                             jsonObject.accumulate("SecurityKey", ConstantParams.getApiSecurityKey());
-                            jsonObject.accumulate("AppId", 3);
+                            jsonObject.accumulate("AppId", APP_ID);
                             jsonObject.accumulate("DeviceId", Helper.getDeviceId());
                             jsonObject.accumulate("DeviceBrand", Build.MANUFACTURER);
                             jsonObject.accumulate("DeviceModel", Build.MODEL);
@@ -44,6 +44,7 @@ public class WebApiClient {
                             jsonObject.accumulate("IsPurchased", false);
                             jsonObject.accumulate("MarketId", App.market);
                             jsonObject.accumulate("AppVersion", BuildConfig.VERSION_CODE);
+                            jsonObject.accumulate("PurchaseToken", null);
                             Boolean result = post(jsonObject);
                             if (result) {
                                 setting.setInstalled(true);
@@ -51,6 +52,7 @@ public class WebApiClient {
                             }
                         }
                     }
+                    checkForUpdate();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -60,7 +62,7 @@ public class WebApiClient {
         thread.start();
     }
 
-    public static void checkForUpdate() {
+    private static void checkForUpdate() {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

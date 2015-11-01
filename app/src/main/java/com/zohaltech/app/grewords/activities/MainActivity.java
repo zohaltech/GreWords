@@ -60,10 +60,8 @@ public class MainActivity extends EnhancedActivity
         }
 
         WebApiClient.sendUserData();
-        WebApiClient.checkForUpdate();
 
-        if (App.preferences.getBoolean("RATED", false) == false)
-        {
+        if (App.preferences.getBoolean("RATED", false) == false) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
         }
     }
@@ -84,21 +82,16 @@ public class MainActivity extends EnhancedActivity
         super.onResume();
         int runCount = App.preferences.getInt("APP_RUN_COUNT", 0);
         boolean rated = App.preferences.getBoolean("RATED", false);
-        if (runCount != 0 && runCount % 6 == 0 && rated == false)
-        {
+        if (runCount != 0 && runCount % 6 == 0 && rated == false) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
-            Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If 504 Essential Words is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, new Runnable()
-            {
+            Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If " + getString(R.string.app_name) + " is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     Helper.rateApp(MainActivity.this);
                 }
-            }, new Runnable()
-            {
+            }, new Runnable() {
                 @Override
-                public void run()
-                {
+                public void run() {
                     //do nothing
                 }
             });

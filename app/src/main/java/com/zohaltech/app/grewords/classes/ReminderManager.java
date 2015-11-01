@@ -303,6 +303,7 @@ public class ReminderManager
         {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminder.getTime().getTime(), pendingIntent);
         }
+
     }
 
     private static void removeAlarm(long vocabularyId)

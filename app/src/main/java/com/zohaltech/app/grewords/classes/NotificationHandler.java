@@ -13,8 +13,7 @@ import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.data.SystemSettings;
 import com.zohaltech.app.grewords.entities.SystemSetting;
 
-public class NotificationHandler
-{
+public class NotificationHandler {
 
     private static NotificationManager notificationManager;
 

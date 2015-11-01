@@ -21,4 +21,7 @@
     <string name="mongol">a052108fcc1c4fc5</string>
     <string name="host_update">http://zohaltech.com/api/appversion</string>
     <string name="update_query_string" formatted="false"><![CDATA[\?SecurityKey=%s&AppId=%s&MarketId=%s&AppVersion=%s&DeviceId=%s]]></string>
+    <string name="drawer_header_1">GRE</string>
+    <string name="drawer_header_2">Preparation Vocabs</string>
+    <!--<string name="drawer_header_3">Vocabs</string>-->
 </resources>

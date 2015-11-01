@@ -10,11 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rey.material.app.TimePickerDialog;
-
+import com.zohaltech.app.grewords.R;
 
 import java.text.SimpleDateFormat;
-
-import com.zohaltech.app.grewords.R;
 
 public final class DialogManager {
 
