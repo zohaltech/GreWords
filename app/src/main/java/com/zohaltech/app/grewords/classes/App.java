@@ -67,7 +67,7 @@ public class App extends Application {
         setAppLocal();
 
         //todo : set market here
-        setTargetMarket(MARKET_BAZAAR);
+        setTargetMarket(MARKET_MYKET);
     }
 
     private void setTargetMarket(int marketId) {

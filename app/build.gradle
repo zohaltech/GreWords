@@ -8,8 +8,8 @@ android {
         applicationId "com.zohaltech.app.grewords"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 102
-        versionName "1.0"
+        versionCode 103
+        versionName "1.03"
     }
     buildTypes {
         release {

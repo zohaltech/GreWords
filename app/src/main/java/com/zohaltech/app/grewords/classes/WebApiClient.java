@@ -18,7 +18,7 @@ import java.net.URL;
 
 
 public class WebApiClient {
-    private static final int    APP_ID              = 3;
+    private static final int    APP_ID              = 4;
     private static final String HOST_URL            = App.context.getString(R.string.host_name);
     private static final String HOST_UPDATE         = App.context.getString(R.string.host_update);
     private static final String UPDATE_QUERY_STRING = App.context.getString(R.string.update_query_string);
