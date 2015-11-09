@@ -26,6 +26,7 @@
                 android:gravity="center"
                 android:padding="15dp"
                 android:textStyle="bold"
+
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/primary"/>
 
@@ -40,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:padding="10dp"
-                    android:text="کتاب Absolutely Essential Words 504 از معروف ترین کتاب های آموزش لغات انگلیسی و یکی از منابع لازم و ضروری برای داوطلبان شرکت در آزمون‌های بین‌المللی و همچنین داوطلبان آزمون کارشناسی ارشد است و همچنین یادگیری این لغات ، نقطه شروع بسیار خوبی برای یادگیری زبان انگیسی است."
+                    android:text="آزمون GRE آزمونی است که معمولا برای ادامه تحصیل در کشور آمریکا از متقاضیان درخواست می شود. آموزش GRE از این رو می تواند برای کسانی که قصد مهاجرت دارند بسیار مهم باشد. به همین منظور در مجموعه پیش روی شما پرکاربردترین لغاتی که میتواند شما را جهت برگزاری هر چه بهتر این آزمون یاری بخشد گردآوری شده است."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/primary_text"/>
 
