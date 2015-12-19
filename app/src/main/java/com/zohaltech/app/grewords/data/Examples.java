@@ -44,8 +44,8 @@ public class Examples {
                 do {
                     Example example = new Example(cursor.getInt(cursor.getColumnIndex(Id)),
                                                   cursor.getInt(cursor.getColumnIndex(VocabularyId)),
-                                                  cursor.getString(cursor.getColumnIndex(Opposites)),
-                                                  cursor.getString(cursor.getColumnIndex(Synonyms)));
+                                                  cursor.getString(cursor.getColumnIndex(Synonyms)),
+                                                  cursor.getString(cursor.getColumnIndex(Opposites)));
 
                     examples.add(example);
                 } while (cursor.moveToNext());
@@ -75,7 +75,7 @@ public class Examples {
         ContentValues values = new ContentValues();
 
         values.put(VocabularyId, example.getVocabularyId());
-//        values.put(Ordinal, example.getOrdinal());
+        //        values.put(Ordinal, example.getOrdinal());
         values.put(Synonyms, example.getSynonyms());
         values.put(Opposites, example.getOpposites());
 

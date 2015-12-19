@@ -78,7 +78,6 @@ public class MainActivity extends EnhancedActivity {
     protected void onResume() {
         super.onResume();
         int runCount = App.preferences.getInt("APP_RUN_COUNT", 0);
-        boolean rated = App.preferences.getBoolean("RATED", false);
         if (runCount == 1 || runCount % 10 == 0 && ReminderManager.getReminderSettings().getStatus() == ReminderSettings.Status.STOP) {
             final Dialog dialog = DialogManager.getPopupDialog(this, "Start Scheduler", "You have not set any reminder yet, Would you like to try it?", "Set it Now", "Remind me Later", null, new Runnable() {
                 @Override
@@ -96,6 +95,7 @@ public class MainActivity extends EnhancedActivity {
             dialog.show();
         }
 
+        boolean rated = App.preferences.getBoolean("RATED", false);
         if (runCount != 0 && runCount % 6 == 0 && rated == false) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
             Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If " + getString(R.string.app_name) + " is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, new Runnable() {
