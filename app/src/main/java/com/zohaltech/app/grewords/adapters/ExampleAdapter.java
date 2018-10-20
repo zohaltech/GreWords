@@ -47,8 +47,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
 
         public ViewHolder(View view) {
             super(view);
-            txtExample = (TextView) view.findViewById(R.id.txtExample);
-            txtOpposites = (TextView) view.findViewById(R.id.txtOpposites);
+            txtExample = view.findViewById(R.id.txtExample);
+            txtOpposites = view.findViewById(R.id.txtOpposites);
         }
     }
 }

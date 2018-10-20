@@ -1,33 +1,75 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    signingConfigs {
+        debugConfig {
+            keyAlias 'sigma_debug'
+            keyPassword 'android'
+            storeFile file('D:/android/key_stores/sigma_debug.keystore')
+            storePassword 'android'
+        }
+        releaseConfig {
+            keyAlias 'gre_release'
+            keyPassword 'gre8113'
+            storeFile file('D:/android/key_stores/gre_keystore.jks')
+            storePassword 'gre8113'
+            v2SigningEnabled true
+        }
+    }
+
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.zohaltech.app.grewords"
-        minSdkVersion 10
-        targetSdkVersion 23
-        versionCode 104
-        versionName "1.04"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 107
+        versionName "1.07"
+        vectorDrawables.useSupportLibrary = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                renameAPK(variant)
+            }
+        }
+        debug {
+            signingConfig signingConfigs.debugConfig
+            applicationVariants.all { variant ->
+                renameAPK(variant)
+            }
+        }
+    }
+}
+
+def private static renameAPK(variant) {
+    variant.outputs.all {
+        if (variant.name == 'debug') {
+            outputFileName = "gre-debug-${variant.versionName}.apk"
+        } else {
+            outputFileName = "gre-${variant.versionName}.apk"
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-annotations:23.1.0'
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
-    compile 'com.android.support:recyclerview-v7:23.1.0'
-    compile 'com.android.support:cardview-v7:23.1.0'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.github.rey5137:material:1.2.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

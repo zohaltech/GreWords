@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.zohaltech.app.grewords.classes.MyRuntimeException;
 import com.zohaltech.app.grewords.entities.SystemSetting;
 
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ public class SystemSettings {
                     settings.add(systemSetting);
                 } while (cursor.moveToNext());
             }
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             if (cursor != null && !cursor.isClosed())

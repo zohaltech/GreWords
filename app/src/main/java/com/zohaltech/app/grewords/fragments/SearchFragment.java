@@ -32,7 +32,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate( R.layout.fragment_search, container, false);
-        recyclerSearch = (RecyclerView) rootView.findViewById(R.id.recyclerSearch);
+        recyclerSearch = rootView.findViewById(R.id.recyclerSearch);
         recyclerSearch.setHasFixedSize(true);
         recyclerSearch.setLayoutManager(new LinearLayoutManager(getActivity()));
         vocabularies.clear();

@@ -48,11 +48,11 @@ public class DefinitionFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_definition, container, false);
 
-        txtPronunciation = (TextView) view.findViewById(R.id.txtPronunciation);
-        txtVocabEnglishDefinition = (TextView) view.findViewById(R.id.txtVocabEnglishDefinition);
+        txtPronunciation = view.findViewById(R.id.txtPronunciation);
+        txtVocabEnglishDefinition = view.findViewById(R.id.txtVocabEnglishDefinition);
 //        txtVocabPersianMeaning = (TextView) view.findViewById(R.id.txtVocabPersianMeaning);
-        Button btnSpeechUS = (Button) view.findViewById(R.id.btnSpeechUS);
-        Button btnSpeechUK = (Button) view.findViewById(R.id.btnSpeechUK);
+        Button btnSpeechUS = view.findViewById(R.id.btnSpeechUS);
+        Button btnSpeechUK = view.findViewById(R.id.btnSpeechUK);
 
         int vocabId = getArguments().getInt(VOCAB_ID);
         vocabulary = Vocabularies.select(vocabId);
@@ -66,20 +66,14 @@ public class DefinitionFragment extends Fragment implements
 //        txtVocabEnglishDefinition.setText(vocabulary.getEncEngDef());
 //        txtVocabPersianMeaning.setText(vocabulary.getEncPersianDef());
 
-        btnSpeechUK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textToSpeech.setLanguage(Locale.UK);
-                speakOut();
-            }
+        btnSpeechUK.setOnClickListener(v -> {
+            textToSpeech.setLanguage(Locale.UK);
+            speakOut();
         });
 
-        btnSpeechUS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textToSpeech.setLanguage(Locale.US);
-                speakOut();
-            }
+        btnSpeechUS.setOnClickListener(v -> {
+            textToSpeech.setLanguage(Locale.US);
+            speakOut();
         });
 
         return view;

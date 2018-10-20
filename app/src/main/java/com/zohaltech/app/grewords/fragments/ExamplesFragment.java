@@ -37,7 +37,7 @@ public class ExamplesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_examples, container, false);
-        RecyclerView recyclerExamples = (RecyclerView) view.findViewById(R.id.recyclerExamples);
+        RecyclerView recyclerExamples = view.findViewById(R.id.recyclerExamples);
         recyclerExamples.setHasFixedSize(true);
         recyclerExamples.setLayoutManager(new LinearLayoutManager(getActivity()));
         int vocabId = getArguments().getInt(VOCAB_ID);

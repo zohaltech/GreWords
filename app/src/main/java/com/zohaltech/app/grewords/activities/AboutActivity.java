@@ -10,16 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.zohaltech.app.grewords.BuildConfig;
-import com.zohaltech.app.grewords.classes.App;
-
 import com.zohaltech.app.grewords.R;
+import com.zohaltech.app.grewords.classes.App;
 import com.zohaltech.app.grewords.classes.Helper;
 
 import widgets.MySnackbar;
-import widgets.MyToast;
 
 
 public class AboutActivity extends EnhancedActivity {
@@ -35,58 +32,45 @@ public class AboutActivity extends EnhancedActivity {
     protected void onCreated() {
         setContentView(R.layout.activity_about);
 
-        txtVersion = (TextView) findViewById(R.id.txtVersion);
-        btnShare = (Button) findViewById(R.id.btnShare);
-        btnProducts = (Button) findViewById(R.id.btnProducts);
-        btnFeedback = (Button) findViewById(R.id.btnFeedback);
-        btnRate = (Button) findViewById(R.id.btnRate);
-        layoutWebsite = (LinearLayout) findViewById(R.id.layoutWebsite);
+        txtVersion = findViewById(R.id.txtVersion);
+        btnShare = findViewById(R.id.btnShare);
+        btnProducts = findViewById(R.id.btnProducts);
+        btnFeedback = findViewById(R.id.btnFeedback);
+        btnRate = findViewById(R.id.btnRate);
+        layoutWebsite = findViewById(R.id.layoutWebsite);
 
         txtVersion.setText("Version " + BuildConfig.VERSION_NAME);
 
-        btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                String message = String.format(getResources().getString(R.string.sharing_message),
-                                               getResources().getString(R.string.app_name),
-                                               App.marketWebsiteUri);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, message);
-                startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_title)));
+        btnShare.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            String message = String.format(getResources().getString(R.string.sharing_message),
+                                           getResources().getString(R.string.app_name),
+                                           App.marketWebsiteUri);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, message);
+            startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_title)));
+        });
+
+        btnProducts.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(App.marketDeveloperUri));
+            if (!myStartActivity(intent)) {
+                MySnackbar.show(layoutWebsite, String.format(getString(R.string.could_not_open_market), App.marketName), Snackbar.LENGTH_SHORT);
             }
         });
 
-        btnProducts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(App.marketDeveloperUri));
-                if (!myStartActivity(intent)) {
-                    MySnackbar.show(layoutWebsite, getString(R.string.could_not_open_market), Snackbar.LENGTH_SHORT);
-                }
-            }
+        btnFeedback.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "info@zohaltech.com", null));
+            intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.feedback_subject));
+            startActivity(Intent.createChooser(intent, getResources().getString(R.string.feedback_title)));
         });
 
-        btnFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "info@zohaltech.com", null));
-                intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.feedback_subject));
-                startActivity(Intent.createChooser(intent, getResources().getString(R.string.feedback_title)));
-            }
-        });
+        btnRate.setOnClickListener(v -> Helper.rateApp(AboutActivity.this));
 
-        btnRate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Helper.rateApp(AboutActivity.this);
-            }
-        });
-
-        layoutWebsite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        layoutWebsite.setOnClickListener(v -> {
+            if (App.market == App.MARKET_PLAY) {
+                Helper.goToWebsite("http://zohaltech.com/en/index.html");
+            } else {
                 Helper.goToWebsite("http://zohaltech.com");
             }
         });

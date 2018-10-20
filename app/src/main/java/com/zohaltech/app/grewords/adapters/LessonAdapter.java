@@ -102,13 +102,10 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         holder.txtLessonNumber.setText("" + lesson);
         holder.txtLesson.setText("Lesson " + lesson);
 
-        holder.layoutRoot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(App.currentActivity, VocabulariesActivity.class);
-                intent.putExtra(VocabulariesActivity.LESSON, lesson);
-                App.currentActivity.startActivity(intent);
-            }
+        holder.layoutRoot.setOnClickListener(v -> {
+            Intent intent = new Intent(App.currentActivity, VocabulariesActivity.class);
+            intent.putExtra(VocabulariesActivity.LESSON, lesson);
+            App.currentActivity.startActivity(intent);
         });
         holder.layoutProgressDetail.setVisibility(View.GONE);
 
@@ -126,25 +123,17 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
             holder.txtVocabProgress.setText(String.format("Vocab %d/%d", status.getVocabIndex(), status.getVocabCount()));
 
-            holder.layoutCircleProgress.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ProgressDetailStatus status = progressDetailStatuses.get(position);
-                    if (status.visible) {
-                        collapse(holder.layoutProgressDetail);
-                        App.handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                holder.layoutProgressDetail.setVisibility(View.GONE);
-                            }
-                        }, DURATION);
-                        status.visible = false;
-                    } else {
-                        holder.layoutProgressDetail.setVisibility(View.VISIBLE);
-                        //ViewCompat.animate(holder.layoutProgressDetail).scaleYBy(12).setDuration(1000).start();
-                        expand(holder.layoutProgressDetail);
-                        status.visible = true;
-                    }
+            holder.layoutCircleProgress.setOnClickListener(v -> {
+                ProgressDetailStatus status1 = progressDetailStatuses.get(position);
+                if (status1.visible) {
+                    collapse(holder.layoutProgressDetail);
+                    App.handler.postDelayed(() -> holder.layoutProgressDetail.setVisibility(View.GONE), DURATION);
+                    status1.visible = false;
+                } else {
+                    holder.layoutProgressDetail.setVisibility(View.VISIBLE);
+                    //ViewCompat.animate(holder.layoutProgressDetail).scaleYBy(12).setDuration(1000).start();
+                    expand(holder.layoutProgressDetail);
+                    status1.visible = true;
                 }
             });
         } else {
@@ -182,14 +171,14 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         public ViewHolder(View view) {
             super(view);
-            layoutRoot = (LinearLayout) view.findViewById(R.id.layoutRoot);
-            txtLessonNumber = (TextView) view.findViewById(R.id.txtLessonNumber);
-            txtLesson = (TextView) view.findViewById(R.id.txtLesson);
-            layoutDivider = (LinearLayout) view.findViewById(R.id.layoutDivider);
-            layoutCircleProgress = (LinearLayout) view.findViewById(R.id.layoutCircleProgress);
-            circleProgress = (CircleProgress) view.findViewById(R.id.circleProgress);
-            layoutProgressDetail = (LinearLayout) view.findViewById(R.id.layoutProgressDetail);
-            txtVocabProgress = (TextView) view.findViewById(R.id.txtVocabProgress);
+            layoutRoot = view.findViewById(R.id.layoutRoot);
+            txtLessonNumber = view.findViewById(R.id.txtLessonNumber);
+            txtLesson = view.findViewById(R.id.txtLesson);
+            layoutDivider = view.findViewById(R.id.layoutDivider);
+            layoutCircleProgress = view.findViewById(R.id.layoutCircleProgress);
+            circleProgress = view.findViewById(R.id.circleProgress);
+            layoutProgressDetail = view.findViewById(R.id.layoutProgressDetail);
+            txtVocabProgress = view.findViewById(R.id.txtVocabProgress);
         }
     }
 

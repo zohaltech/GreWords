@@ -8,6 +8,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
@@ -98,9 +99,10 @@ public final class Helper {
         return bd;
     }
 
-    public static String getDeviceId() {
-        TelephonyManager telephonyManager = (TelephonyManager) App.context.getSystemService(Context.TELEPHONY_SERVICE);
-        return telephonyManager.getDeviceId();
+    public static String getDeviceId(Context context) {
+        String deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        //Log.i("DeviceId", deviceId);
+        return deviceId;
     }
 
     public static void goToWebsite(String url) {

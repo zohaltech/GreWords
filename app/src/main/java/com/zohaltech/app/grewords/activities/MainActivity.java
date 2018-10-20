@@ -58,16 +58,20 @@ public class MainActivity extends EnhancedActivity {
             editor.apply();
         }
 
-        WebApiClient.sendUserData();
+        WebApiClient.sendUserData(this);
 
         if (App.preferences.getBoolean("RATED", false) == false) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
+        }
+
+        if (App.preferences.getBoolean("SCHEDULED", false) == false) {
+            App.preferences.edit().putInt("APP_RUN_COUNT_FOR_SCHEDULE", App.preferences.getInt("APP_RUN_COUNT_FOR_SCHEDULE", 0) + 1).apply();
         }
     }
 
     @Override
     protected void onToolbarCreated() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        drawerLayout = findViewById(R.id.drawerLayout);
         drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(drawerLayout, toolbar);
         drawerFragment.setMenuVisibility(true);
@@ -77,37 +81,25 @@ public class MainActivity extends EnhancedActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        int runCount = App.preferences.getInt("APP_RUN_COUNT", 0);
-        if (runCount == 1 || runCount % 10 == 0 && ReminderManager.getReminderSettings().getStatus() == ReminderSettings.Status.STOP) {
-            final Dialog dialog = DialogManager.getPopupDialog(this, "Start Scheduler", "You have not set any reminder yet, Would you like to try it?", "Set it Now", "Remind me Later", null, new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(MainActivity.this, SchedulerActivity.class);
-                    startActivity(intent);
-                    //                        finish();
-                }
-            }, new Runnable() {
-                @Override
-                public void run() {
-                    //do nothing
-                }
-            });
-            dialog.show();
+
+        int runCountForSchedule = App.preferences.getInt("APP_RUN_COUNT_FOR_SCHEDULE", 0);
+        boolean scheduled = App.preferences.getBoolean("SCHEDULED", false);
+        if (runCountForSchedule != 0 && runCountForSchedule % 3 == 0 && scheduled == false && ReminderManager.getReminderSettings().getStatus() == ReminderSettings.Status.STOP) {
+            DialogManager.getPopupDialog(this, "Start Scheduler", "You have not set any reminder yet, Would you like to try it?", "Set it Now", "Remind me Later", null, () -> {
+                App.preferences.edit().putBoolean("SCHEDULED", true).apply();
+                Intent intent = new Intent(MainActivity.this, SchedulerActivity.class);
+                startActivity(intent);
+            }, () -> {
+                //do nothing
+            }).show();
         }
 
+        int runCount = App.preferences.getInt("APP_RUN_COUNT", 0);
         boolean rated = App.preferences.getBoolean("RATED", false);
-        if (runCount != 0 && runCount % 6 == 0 && rated == false) {
+        if (runCount != 0 && runCount % 5 == 0 && rated == false) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
-            Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If " + getString(R.string.app_name) + " is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, new Runnable() {
-                @Override
-                public void run() {
-                    Helper.rateApp(MainActivity.this);
-                }
-            }, new Runnable() {
-                @Override
-                public void run() {
-                    //do nothing
-                }
+            Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If " + getString(R.string.app_name) + " is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, () -> Helper.rateApp(MainActivity.this), () -> {
+                //do nothing
             });
             dialog.show();
         }
@@ -152,12 +144,7 @@ public class MainActivity extends EnhancedActivity {
             }
         });
 
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayView(1);
-            }
-        });
+        searchView.setOnSearchClickListener(v -> displayView(1));
 
         return true;
     }

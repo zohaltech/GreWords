@@ -9,7 +9,6 @@ import android.provider.Settings;
 
 import com.zohaltech.app.grewords.classes.App;
 import com.zohaltech.app.grewords.classes.CsvReader;
-import com.zohaltech.app.grewords.classes.MyRuntimeException;
 
 import java.io.InputStreamReader;
 
@@ -46,7 +45,7 @@ public class DataAccess extends SQLiteOpenHelper {
             }
             db.insert(SystemSettings.TableName, null, systemSettingsValues);
 
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -61,7 +60,7 @@ public class DataAccess extends SQLiteOpenHelper {
 
             onCreate(database);
 
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -85,7 +84,7 @@ public class DataAccess extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDB();
             result = db.insert(table, null, values);
             db.close();
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return result;
@@ -97,7 +96,7 @@ public class DataAccess extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDB();
             result = db.update(table, values, whereClause, selectionArgs);
             db.close();
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return result;
@@ -109,7 +108,7 @@ public class DataAccess extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDB();
             result = db.delete(table, whereClause, selectionArgs);
             db.close();
-        } catch (MyRuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return result;

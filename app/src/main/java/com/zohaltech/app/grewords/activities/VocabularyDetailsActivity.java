@@ -47,11 +47,11 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
     protected void onCreated() {
         setContentView(R.layout.activity_vocabulary_details);
 
-        layoutRoot = (LinearLayout) findViewById(R.id.layoutRoot);
-        txtVocabulary = (TextView) findViewById(R.id.txtVocabulary);
-        chkBookmark = (CheckBox) findViewById(R.id.chkBookmark);
-        tabCategories = (PagerSlidingTabStrip) findViewById(R.id.tabDescriptions);
-        pagerCategories = (ViewPager) findViewById(R.id.pagerDescItems);
+        layoutRoot = findViewById(R.id.layoutRoot);
+        txtVocabulary = findViewById(R.id.txtVocabulary);
+        chkBookmark = findViewById(R.id.chkBookmark);
+        tabCategories = findViewById(R.id.tabDescriptions);
+        pagerCategories = findViewById(R.id.pagerDescItems);
 
         int vocabularyId = getIntent().getIntExtra(VOCAB_ID, 0);
 
@@ -61,17 +61,14 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
 
         chkBookmark.setChecked(vocabulary.getBookmarked());
 
-        chkBookmark.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                boolean bookmarked = chkBookmark.isChecked();
-                vocabulary.setBookmarked(bookmarked);
-                if (Vocabularies.update(vocabulary) > 0) {
-                    if (bookmarked) {
-                        MySnackbar.show(layoutRoot, "Vocabulary added to bookmarks", Snackbar.LENGTH_SHORT);
-                    } else {
-                        MySnackbar.show(layoutRoot, "Vocabulary removed from bookmarks", Snackbar.LENGTH_SHORT);
-                    }
+        chkBookmark.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            boolean bookmarked = chkBookmark.isChecked();
+            vocabulary.setBookmarked(bookmarked);
+            if (Vocabularies.update(vocabulary) > 0) {
+                if (bookmarked) {
+                    MySnackbar.show(layoutRoot, "Vocabulary added to bookmarks", Snackbar.LENGTH_SHORT);
+                } else {
+                    MySnackbar.show(layoutRoot, "Vocabulary removed from bookmarks", Snackbar.LENGTH_SHORT);
                 }
             }
         });

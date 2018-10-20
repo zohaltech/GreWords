@@ -13,7 +13,7 @@ public class MySnackbar {
         Snackbar snackbar = Snackbar.make(view, message, duration);
         View snackbarView = snackbar.getView();
         snackbarView.setBackgroundResource(R.color.primary_dark);
-        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(view.getContext().getResources().getColor(R.color.white));
         snackbar.show();
     }

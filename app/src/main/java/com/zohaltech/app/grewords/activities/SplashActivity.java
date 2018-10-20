@@ -19,23 +19,17 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        imgSplashBorder = (ImageView) findViewById(R.id.imgSplashBorder);
+        imgSplashBorder = findViewById(R.id.imgSplashBorder);
 
-        App.handler.post(new Runnable() {
-            @Override
-            public void run() {
-                Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.rotate);
-                imgSplashBorder.startAnimation(animation);
-            }
+        App.handler.post(() -> {
+            Animation animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.rotate);
+            imgSplashBorder.startAnimation(animation);
         });
 
-        App.handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        App.handler.postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }, 3000);
     }
 

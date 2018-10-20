@@ -44,14 +44,11 @@ public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.Vi
         }
 
         holder.txtVocabulary.setText(vocabulary.getVocabulary());
-        holder.layoutVocabulary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(App.currentActivity, VocabularyDetailsActivity.class);
-                intent.putExtra(VocabularyDetailsActivity.VOCAB_ID, vocabulary.getId());
-                intent.putExtra(VocabularyDetailsActivity.INIT_MODE_KEY, VocabularyDetailsActivity.MODE_VIEW);
-                App.currentActivity.startActivity(intent);
-            }
+        holder.layoutVocabulary.setOnClickListener(v -> {
+            Intent intent = new Intent(App.currentActivity, VocabularyDetailsActivity.class);
+            intent.putExtra(VocabularyDetailsActivity.VOCAB_ID, vocabulary.getId());
+            intent.putExtra(VocabularyDetailsActivity.INIT_MODE_KEY, VocabularyDetailsActivity.MODE_VIEW);
+            App.currentActivity.startActivity(intent);
         });
     }
 
@@ -67,9 +64,9 @@ public class VocabularyAdapter extends RecyclerView.Adapter<VocabularyAdapter.Vi
 
         public ViewHolder(View view) {
             super(view);
-            layoutVocabulary = (LinearLayout) view.findViewById(R.id.layoutVocabulary);
-            txtVocabulary = (TextView) view.findViewById(R.id.txtVocabulary);
-            imgLearned = (ImageView) view.findViewById(R.id.imgLearned);
+            layoutVocabulary = view.findViewById(R.id.layoutVocabulary);
+            txtVocabulary = view.findViewById(R.id.txtVocabulary);
+            imgLearned = view.findViewById(R.id.imgLearned);
         }
     }
 }

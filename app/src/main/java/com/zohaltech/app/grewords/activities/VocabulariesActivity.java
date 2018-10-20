@@ -21,7 +21,7 @@ public class VocabulariesActivity extends EnhancedActivity {
     @Override
     protected void onCreated() {
         setContentView(R.layout.activity_vocabularies);
-        RecyclerView recyclerVocabularies = (RecyclerView) findViewById(R.id.recyclerVocabularies);
+        RecyclerView recyclerVocabularies = findViewById(R.id.recyclerVocabularies);
         recyclerVocabularies.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerVocabularies.setLayoutManager(layoutManager);

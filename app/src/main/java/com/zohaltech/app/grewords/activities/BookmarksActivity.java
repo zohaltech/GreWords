@@ -27,8 +27,8 @@ public class BookmarksActivity extends EnhancedActivity {
     protected void onCreated() {
         setContentView(R.layout.activity_bookmarks);
 
-        recyclerBookmarks = (RecyclerView) findViewById(R.id.recyclerBookmarks);
-        txtNothingFound = (TextView) findViewById(R.id.txtNothingFound);
+        recyclerBookmarks = findViewById(R.id.recyclerBookmarks);
+        txtNothingFound = findViewById(R.id.txtNothingFound);
         recyclerBookmarks.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerBookmarks.setLayoutManager(layoutManager);

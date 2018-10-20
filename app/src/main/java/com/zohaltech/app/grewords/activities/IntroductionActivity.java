@@ -10,7 +10,7 @@ public class IntroductionActivity extends EnhancedActivity {
     @Override
     protected void onCreated() {
         setContentView(R.layout.activity_introduction);
-        widgets.LatinTextView txtWelcome=(widgets.LatinTextView) findViewById(R.id.txtWelcome);
+        widgets.LatinTextView txtWelcome= findViewById(R.id.txtWelcome);
         txtWelcome.setText("Welcome to "+ getString(R.string.app_name));
     }
 

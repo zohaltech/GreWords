@@ -32,7 +32,7 @@ public class LessonsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_lessons, container, false);
-        recyclerLessons = (RecyclerView) rootView.findViewById(R.id.recyclerLessons);
+        recyclerLessons = rootView.findViewById(R.id.recyclerLessons);
         recyclerLessons.setHasFixedSize(true);
         recyclerLessons.setLayoutManager(new LinearLayoutManager(getActivity()));
         populateLessons();

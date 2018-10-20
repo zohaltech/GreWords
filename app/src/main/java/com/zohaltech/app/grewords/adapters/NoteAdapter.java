@@ -47,68 +47,55 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Note note = notes.get(position);
         holder.txtNote.setText(note.getDescription());
-        holder.imgMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(context, holder.imgMore);
-                popup.getMenuInflater().inflate(R.menu.menu_note, popup.getMenu());
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        int id = item.getItemId();
-                        if (id == R.id.action_edit) {
-                            final Dialog dialog = new Dialog(context);
-                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                            dialog.setContentView(R.layout.dialog_edit_note);
-                            dialog.setCanceledOnTouchOutside(true);
-                            dialog.setCancelable(true);
-                            final EditText edtNote = (EditText) dialog.findViewById(R.id.edtNote);
-                            Button btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
-                            Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
-                            edtNote.setText(note.getDescription());
-                            edtNote.selectAll();
-                            dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
-                            btnSubmit.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (edtNote.getText().toString().trim().length() > 0) {
-                                        note.setDescription(edtNote.getText().toString());
-                                        if (Notes.update(note) > 0) {
-                                            notes.set(position, note);
-                                            notifyDataSetChanged();
-                                            fab.show();
-                                        } else {
-                                            MySnackbar.show(edtNote, "Error submitting note!", Snackbar.LENGTH_SHORT);
-                                        }
-                                        dialog.dismiss();
-                                    } else {
-                                        MySnackbar.show(edtNote, "Please enter a note!", Snackbar.LENGTH_SHORT);
-                                    }
-                                }
-                            });
-
-                            btnCancel.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            dialog.show();
-
-                        } else if (id == R.id.action_delete) {
-                            if (Notes.delete(note) > 0) {
-                                notes.remove(position);
+        holder.imgMore.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(context, holder.imgMore);
+            popup.getMenuInflater().inflate(R.menu.menu_note, popup.getMenu());
+            popup.setOnMenuItemClickListener(item -> {
+                int id = item.getItemId();
+                if (id == R.id.action_edit) {
+                    final Dialog dialog = new Dialog(context);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.dialog_edit_note);
+                    dialog.setCanceledOnTouchOutside(true);
+                    dialog.setCancelable(true);
+                    final EditText edtNote = dialog.findViewById(R.id.edtNote);
+                    Button btnSubmit = dialog.findViewById(R.id.btnSubmit);
+                    Button btnCancel = dialog.findViewById(R.id.btnCancel);
+                    edtNote.setText(note.getDescription());
+                    edtNote.selectAll();
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        
+                    btnSubmit.setOnClickListener(v12 -> {
+                        if (edtNote.getText().toString().trim().length() > 0) {
+                            note.setDescription(edtNote.getText().toString());
+                            if (Notes.update(note) > 0) {
+                                notes.set(position, note);
                                 notifyDataSetChanged();
                                 fab.show();
+                            } else {
+                                MySnackbar.show(edtNote, "Error submitting note!", Snackbar.LENGTH_SHORT);
                             }
+                            dialog.dismiss();
+                        } else {
+                            MySnackbar.show(edtNote, "Please enter a note!", Snackbar.LENGTH_SHORT);
                         }
-                        return true;
+                    });
+        
+                    btnCancel.setOnClickListener(v1 -> dialog.dismiss());
+        
+                    dialog.show();
+        
+                } else if (id == R.id.action_delete) {
+                    if (Notes.delete(note) > 0) {
+                        notes.remove(position);
+                        notifyDataSetChanged();
+                        fab.show();
                     }
-                });
+                }
+                return true;
+            });
 
-                popup.show();
-            }
+            popup.show();
         });
     }
 
@@ -123,8 +110,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            txtNote = (TextView) view.findViewById(R.id.txtNote);
-            imgMore = (ImageButton) view.findViewById(R.id.imgMore);
+            txtNote = view.findViewById(R.id.txtNote);
+            imgMore = view.findViewById(R.id.imgMore);
         }
     }
 }

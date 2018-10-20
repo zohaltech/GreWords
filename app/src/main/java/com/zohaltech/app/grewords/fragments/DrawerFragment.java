@@ -35,39 +35,37 @@ public class DrawerFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navView = (NavigationView) view.findViewById(R.id.navView);
+        navView = view.findViewById(R.id.navView);
+
+        final MenuItem helpItem = navView.getMenu().findItem(R.id.nav_help);
+        if (App.market == App.MARKET_PLAY) {
+            helpItem.setVisible(false);
+        }
 
         //updateUi();
 
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Intent intent;
-                switch (menuItem.getItemId()) {
-                    case R.id.nav_scheduler:
-                        intent = new Intent(getActivity(), SchedulerActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_bookmarks:
-                        intent = new Intent(getActivity(), BookmarksActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_help:
-                        intent = new Intent(getActivity(), IntroductionActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_about:
-                        intent = new Intent(getActivity(), AboutActivity.class);
-                        startActivity(intent);
-                        break;
-                }
-                App.handler.postDelayed(new Runnable() {
-                    public void run() {
-                        drawerLayout.closeDrawers();
-                    }
-                }, 500);
-                return false;
+        navView.setNavigationItemSelectedListener(menuItem -> {
+            Intent intent;
+            switch (menuItem.getItemId()) {
+                case R.id.nav_scheduler:
+                    intent = new Intent(getActivity(), SchedulerActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_bookmarks:
+                    intent = new Intent(getActivity(), BookmarksActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_help:
+                    intent = new Intent(getActivity(), IntroductionActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_about:
+                    intent = new Intent(getActivity(), AboutActivity.class);
+                    startActivity(intent);
+                    break;
             }
+            App.handler.postDelayed(() -> drawerLayout.closeDrawers(), 500);
+            return false;
         });
     }
 
@@ -94,11 +92,6 @@ public class DrawerFragment extends Fragment {
         };
 
         drawerLayout.setDrawerListener(mDrawerToggle);
-        drawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mDrawerToggle.syncState();
-            }
-        });
+        drawerLayout.post(() -> mDrawerToggle.syncState());
     }
 }

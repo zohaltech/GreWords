@@ -38,6 +38,7 @@ public class App extends Application {
     public static String            marketUri;
     public static String            marketWebsiteUri;
     public static String            marketDeveloperUri;
+    //public static String            marketDeveloperWebsiteUri;
     public static String            marketPollUri;
     public static String            marketPollIntent;
 
@@ -67,7 +68,7 @@ public class App extends Application {
         setAppLocal();
 
         //todo : set market here
-        setTargetMarket(MARKET_BAZAAR);
+        setTargetMarket(MARKET_PLAY);
     }
 
     private void setTargetMarket(int marketId) {
@@ -111,8 +112,11 @@ public class App extends Application {
                 marketPackage = "com.android.vending";
                 marketAction = "com.android.vending.billing.InAppBillingService.BIND";
                 marketUri = "market://details?id=" + getPackageName();
-                marketWebsiteUri = "" + getPackageName();
-                marketPollIntent = Intent.ACTION_EDIT;
+                marketWebsiteUri = "http://play.google.com/store/apps/details?id=" + getPackageName();
+                marketDeveloperUri = "http://play.google.com/store/search?q=pub:ZohalTech";
+                //marketDeveloperWebsiteUri = "http://play.google.com/store/search?q=pub:ZohalTech";
+                marketPollUri = "market://details?id=" + getPackageName();
+                marketPollIntent = Intent.ACTION_VIEW;
                 break;
         }
     }

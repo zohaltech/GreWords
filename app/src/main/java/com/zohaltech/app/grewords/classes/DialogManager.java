@@ -2,6 +2,7 @@ package com.zohaltech.app.grewords.classes;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,15 +10,15 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rey.material.app.TimePickerDialog;
 import com.zohaltech.app.grewords.R;
 
-import java.text.SimpleDateFormat;
+import java.text.MessageFormat;
 
 public final class DialogManager {
-
-    public static String timeResult;
-
+    
+    public static  String           timeResult;
+    private static TimePickerDialog timePickerDialog;
+    
     public static Dialog getPopupDialog(
             Context context
             , final String caption
@@ -35,59 +36,40 @@ public final class DialogManager {
         dialog.setContentView(R.layout.dialog_popup);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(true);
-        TextView txtCaption = (TextView) dialog.findViewById(R.id.txtCaption);
-        TextView txtMessage = (TextView) dialog.findViewById(R.id.txtMessage);
-        Button positiveButton = (Button) dialog.findViewById(R.id.positiveButton);
-        Button negativeButton = (Button) dialog.findViewById(R.id.negativeButton);
+        TextView txtCaption = dialog.findViewById(R.id.txtCaption);
+        TextView txtMessage = dialog.findViewById(R.id.txtMessage);
+        Button positiveButton = dialog.findViewById(R.id.positiveButton);
+        Button negativeButton = dialog.findViewById(R.id.negativeButton);
         txtCaption.setText(caption);
         txtMessage.setText(message);
         positiveButton.setText(positiveButtonText);
         negativeButton.setText(negativeButtonText);
-
-        positiveButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onPositiveButtonClick.run();
-                dialog.dismiss();
-            }
+        
+        positiveButton.setOnClickListener(v -> {
+            onPositiveButtonClick.run();
+            dialog.dismiss();
         });
-
-        negativeButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onNegativeButtonClick.run();
-                dialog.dismiss();
-            }
+        
+        negativeButton.setOnClickListener(v -> {
+            onNegativeButtonClick.run();
+            dialog.dismiss();
         });
         return dialog;
     }
-
-    public static void showTimePickerDialog(Activity activity
-            , String caption, int hour, int minute, final Runnable onPositiveActionClick) {
-
-        final TimePickerDialog timePickerDialog = new TimePickerDialog(activity);
-        timePickerDialog.title(caption);
-        timePickerDialog.cancelable(true);
-        timePickerDialog.cornerRadius(5);
-        timePickerDialog.hour(hour);
-        timePickerDialog.minute(minute);
-        timePickerDialog.negativeAction("CANCEL");
-        timePickerDialog.positiveAction("OK");
-        timePickerDialog.positiveActionClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timeResult = timePickerDialog.getFormattedTime(new SimpleDateFormat("HH:mm"));
-                onPositiveActionClick.run();
-                timeResult = "";
-                timePickerDialog.dismiss();
-            }
-        });
-        timePickerDialog.negativeActionClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePickerDialog.dismiss();
-            }
-        });
+    
+    public static void showTimePickerDialog(Activity activity, int hour, int minute, final Runnable onPositiveActionClick) {
+        timePickerDialog =
+                new android.app.TimePickerDialog(activity, (view, hourOfDay, minute1) -> {
+                    timeResult = MessageFormat.format("{0}:{1}",
+                            String.valueOf(hourOfDay).length() == 1 ? "0" + hourOfDay : hourOfDay,
+                            String.valueOf(minute1).length() == 1 ? "0" + minute1 : minute1);
+                    onPositiveActionClick.run();
+                    timeResult = "";
+                    if (timePickerDialog != null && timePickerDialog.isShowing()) {
+                        timePickerDialog.dismiss();
+                    }
+                }, hour, minute, true);
+        timePickerDialog.setTitle("");
         timePickerDialog.show();
     }
 }

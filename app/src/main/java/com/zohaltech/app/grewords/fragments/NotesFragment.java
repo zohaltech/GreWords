@@ -49,9 +49,9 @@ public class NotesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
-        final RecyclerView recyclerNotes = (RecyclerView) view.findViewById(R.id.recyclerNotes);
-        final FloatingActionButton fabAddNote = (FloatingActionButton) view.findViewById(R.id.fabAddNote);
-        final TextView txtNothingFound = (TextView) view.findViewById(R.id.txtNothingFound);
+        final RecyclerView recyclerNotes = view.findViewById(R.id.recyclerNotes);
+        final FloatingActionButton fabAddNote = view.findViewById(R.id.fabAddNote);
+        final TextView txtNothingFound = view.findViewById(R.id.txtNothingFound);
         recyclerNotes.setHasFixedSize(true);
         recyclerNotes.setLayoutManager(new LinearLayoutManager(getActivity()));
         vocabId = getArguments().getInt(VOCAB_ID);
@@ -91,48 +91,37 @@ public class NotesFragment extends Fragment {
 
         adapter.notifyDataSetChanged();
 
-        fabAddNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_edit_note);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.setCancelable(true);
-                final EditText edtNote = (EditText) dialog.findViewById(R.id.edtNote);
-                Button btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
-                Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+        fabAddNote.setOnClickListener(v -> {
+            final Dialog dialog = new Dialog(getActivity());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_edit_note);
+            dialog.setCanceledOnTouchOutside(true);
+            dialog.setCancelable(true);
+            final EditText edtNote = dialog.findViewById(R.id.edtNote);
+            Button btnSubmit = dialog.findViewById(R.id.btnSubmit);
+            Button btnCancel = dialog.findViewById(R.id.btnCancel);
 
-                dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 
-                btnSubmit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (edtNote.getText().toString().trim().length() > 0) {
-                            Note note = new Note(vocabId, 1, edtNote.getText().toString());
-                            long id = Notes.insert(note);
-                            if (id > 0) {
-                                note.setId(id);
-                                notes.add(note);
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                MySnackbar.show(edtNote, "Error submitting note!", Snackbar.LENGTH_SHORT);
-                            }
-                            dialog.dismiss();
-                        } else {
-                            MySnackbar.show(edtNote, "Please enter a note!", Snackbar.LENGTH_SHORT);
-                        }
+            btnSubmit.setOnClickListener(v12 -> {
+                if (edtNote.getText().toString().trim().length() > 0) {
+                    Note note = new Note(vocabId, 1, edtNote.getText().toString());
+                    long id = Notes.insert(note);
+                    if (id > 0) {
+                        note.setId(id);
+                        notes.add(note);
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        MySnackbar.show(edtNote, "Error submitting note!", Snackbar.LENGTH_SHORT);
                     }
-                });
+                    dialog.dismiss();
+                } else {
+                    MySnackbar.show(edtNote, "Please enter a note!", Snackbar.LENGTH_SHORT);
+                }
+            });
 
-                btnCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-            }
+            btnCancel.setOnClickListener(v1 -> dialog.dismiss());
+            dialog.show();
         });
 
         return view;

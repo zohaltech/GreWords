@@ -26,8 +26,8 @@ public class MyToast extends Toast {
     private MyToast(Context context) {
         super(context);
         View layout = LayoutInflater.from(App.context).inflate(R.layout.my_toast, null);
-        image = (ImageView) layout.findViewById(R.id.image);
-        text = (TextView) layout.findViewById(R.id.text);
+        image = layout.findViewById(R.id.image);
+        text = layout.findViewById(R.id.text);
         setView(layout);
         //setGravity(Gravity.BOTTOM, 0, 0);
     }
