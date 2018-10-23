@@ -1,8 +1,6 @@
 package com.zohaltech.app.grewords.classes;
 
-import android.app.Activity;
 import android.app.Application;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,20 +9,19 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.zohaltech.app.grewords.BuildConfig;
+
 import java.util.Locale;
 
 public class App extends Application {
-
+    
     public static final int MARKET_BAZAAR = 0;
     public static final int MARKET_CANDO  = 1;
     public static final int MARKET_MYKET  = 2;
     public static final int MARKET_PLAY   = 3;
-
-    public static Context           context;
-    public static Activity          currentActivity;
+    
     public static SharedPreferences preferences;
-    //public static Typeface          englishFont;
-    //public static Typeface          englishFontBold;
     public static Typeface          persianFont;
     public static Typeface          persianFontBold;
     public static Handler           handler;
@@ -41,36 +38,37 @@ public class App extends Application {
     //public static String            marketDeveloperWebsiteUri;
     public static String            marketPollUri;
     public static String            marketPollIntent;
-
-    public static NotificationManager notificationManager;
-
-    public static void setAppLocal() {
+    
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        persianFont = Typeface.createFromAsset(getAssets(), "fonts/byekan.ttf");
+        persianFontBold = Typeface.createFromAsset(getAssets(), "fonts/byekan.ttf");
+        handler = new Handler();
+        screenWidth = getResources().getDisplayMetrics().widthPixels;
+        screenHeight = getResources().getDisplayMetrics().heightPixels;
+        setAppLocal(this);
+        
+        //todo : set market here
+        setTargetMarket(MARKET_PLAY);
+        
+        try {
+            FirebaseMessaging.getInstance().subscribeToTopic("public");
+            FirebaseMessaging.getInstance().subscribeToTopic("" + BuildConfig.VERSION_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void setAppLocal(Context context) {
         locale = new Locale("en");
         Locale.setDefault(locale);
         Configuration config = context.getResources().getConfiguration();
         config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
     }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = getApplicationContext();
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        //englishFont = Typeface.createFromAsset(context.getAssets(), "fonts/exo.ttf");
-        //englishFontBold = Typeface.createFromAsset(context.getAssets(), "fonts/exo.ttf");
-        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        persianFont = Typeface.createFromAsset(context.getAssets(), "fonts/byekan.ttf");
-        persianFontBold = Typeface.createFromAsset(context.getAssets(), "fonts/byekan.ttf");
-        handler = new Handler();
-        screenWidth = getResources().getDisplayMetrics().widthPixels;
-        screenHeight = getResources().getDisplayMetrics().heightPixels;
-        setAppLocal();
-
-        //todo : set market here
-        setTargetMarket(MARKET_PLAY);
-    }
-
+    
     private void setTargetMarket(int marketId) {
         switch (marketId) {
             case MARKET_BAZAAR:
@@ -120,7 +118,7 @@ public class App extends Application {
                 break;
         }
     }
-
+    
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

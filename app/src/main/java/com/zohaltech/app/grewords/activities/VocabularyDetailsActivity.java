@@ -4,11 +4,10 @@ package com.zohaltech.app.grewords.activities;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -33,7 +32,7 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
     public static final  String VOCAB_ID      = "VOCAB_ID";
     //public static final String SEARCH_TEXT        = "SEARCH_TEXT";
     private static final int    TAB_COUNT     = 3;
-    LinearLayout            layoutRoot;
+    LinearLayoutCompat      layoutRoot;
     TextView                txtVocabulary;
     CheckBox                chkBookmark;
     PagerSlidingTabStrip    tabCategories;
@@ -54,8 +53,8 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
         pagerCategories = findViewById(R.id.pagerDescItems);
 
         int vocabularyId = getIntent().getIntExtra(VOCAB_ID, 0);
-
-        vocabulary = Vocabularies.select(vocabularyId);
+    
+        vocabulary = Vocabularies.select(this, vocabularyId);
         assert vocabulary != null;
         txtVocabulary.setText(vocabulary.getVocabulary());
 
@@ -64,7 +63,7 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
         chkBookmark.setOnCheckedChangeListener((buttonView, isChecked) -> {
             boolean bookmarked = chkBookmark.isChecked();
             vocabulary.setBookmarked(bookmarked);
-            if (Vocabularies.update(vocabulary) > 0) {
+            if (Vocabularies.update(this, vocabulary) > 0) {
                 if (bookmarked) {
                     MySnackbar.show(layoutRoot, "Vocabulary added to bookmarks", Snackbar.LENGTH_SHORT);
                 } else {
@@ -72,9 +71,9 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
                 }
             }
         });
-
-        examples = Examples.getExamples(vocabularyId);
-        notes = Notes.getNotes(vocabularyId);
+    
+        examples = Examples.getExamples(this, vocabularyId);
+        notes = Notes.getNotes(this, vocabularyId);
 
         ArrayList<String> tabTitles = new ArrayList<>();
         tabTitles.add("MEANING");

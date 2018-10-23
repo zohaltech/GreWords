@@ -12,13 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.data.Vocabularies;
 import com.zohaltech.app.grewords.entities.Vocabulary;
 
 import java.util.Locale;
-
-import com.zohaltech.app.grewords.R;
 
 public class DefinitionFragment extends Fragment implements
                                                       TextToSpeech.OnInitListener {
@@ -55,7 +53,7 @@ public class DefinitionFragment extends Fragment implements
         Button btnSpeechUK = view.findViewById(R.id.btnSpeechUK);
 
         int vocabId = getArguments().getInt(VOCAB_ID);
-        vocabulary = Vocabularies.select(vocabId);
+        vocabulary = Vocabularies.select(getContext(), vocabId);
 
         textToSpeech = new TextToSpeech(getActivity(), this);
 

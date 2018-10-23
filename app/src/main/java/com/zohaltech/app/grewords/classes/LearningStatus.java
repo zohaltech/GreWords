@@ -1,6 +1,8 @@
 package com.zohaltech.app.grewords.classes;
 
 
+import android.content.Context;
+
 import com.zohaltech.app.grewords.data.Vocabularies;
 import com.zohaltech.app.grewords.entities.Vocabulary;
 import com.zohaltech.app.grewords.serializables.Reminder;
@@ -12,13 +14,13 @@ public class  LearningStatus {
     private int vocabIndex;
     private int progress;
     private int vocabCount;
-
-    public static LearningStatus getLearningStatusByLesson(int lesson) {
+    
+    public static LearningStatus getLearningStatusByLesson(Context context, int lesson) {
         LearningStatus learningStatus = new LearningStatus();
         ReminderSettings settings = ReminderManager.getReminderSettings();
 
         if (settings.getStatus() != ReminderSettings.Status.STOP) {
-            ArrayList<Vocabulary> vocabularies = Vocabularies.selectByLesson(lesson);
+            ArrayList<Vocabulary> vocabularies = Vocabularies.selectByLesson(context, lesson);
             int vocabCount = vocabularies.size();
             Reminder reminder = ReminderManager.getLastReminder();
             if (reminder != null) {
@@ -27,7 +29,7 @@ public class  LearningStatus {
 
                 //        if (currentVocabId == 0)
                 //            return null;
-                Vocabulary currentVocab = Vocabularies.select(currentVocabId);
+                Vocabulary currentVocab = Vocabularies.select(context, currentVocabId);
                 assert currentVocab != null;
 
                 int vocabIndex = 0;

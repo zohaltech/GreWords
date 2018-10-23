@@ -7,14 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-
+import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.adapters.VocabularyAdapter;
 import com.zohaltech.app.grewords.data.Vocabularies;
 import com.zohaltech.app.grewords.entities.Vocabulary;
 
 import java.util.ArrayList;
-
-import com.zohaltech.app.grewords.R;
 
 public class BookmarksActivity extends EnhancedActivity {
 
@@ -34,7 +32,7 @@ public class BookmarksActivity extends EnhancedActivity {
         recyclerBookmarks.setLayoutManager(layoutManager);
         
         //vocabularies = Vocabularies.selectBookmarks();
-        adapter = new VocabularyAdapter(this, vocabularies, false);
+        adapter = new VocabularyAdapter(this, vocabularies);
         recyclerBookmarks.setAdapter(adapter);
 
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
@@ -56,7 +54,7 @@ public class BookmarksActivity extends EnhancedActivity {
     protected void onResume() {
         super.onResume();
         vocabularies.clear();
-        vocabularies.addAll(Vocabularies.selectBookmarks());
+        vocabularies.addAll(Vocabularies.selectBookmarks(this));
         adapter.notifyDataSetChanged();
 
     }

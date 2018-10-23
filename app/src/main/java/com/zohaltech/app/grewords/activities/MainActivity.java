@@ -10,21 +10,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.zohaltech.app.grewords.BuildConfig;
 import com.zohaltech.app.grewords.R;
+import com.zohaltech.app.grewords.api.Webservice;
 import com.zohaltech.app.grewords.classes.App;
 import com.zohaltech.app.grewords.classes.DialogManager;
 import com.zohaltech.app.grewords.classes.Helper;
 import com.zohaltech.app.grewords.classes.ReminderManager;
-import com.zohaltech.app.grewords.classes.WebApiClient;
 import com.zohaltech.app.grewords.data.SystemSettings;
 import com.zohaltech.app.grewords.entities.SystemSetting;
 import com.zohaltech.app.grewords.fragments.DrawerFragment;
@@ -36,39 +35,47 @@ import widgets.MySnackbar;
 
 
 public class MainActivity extends EnhancedActivity {
-
+    
     private final String APP_VERSION = "APP_VERSION";
-
+    
     long startTime;
     private DrawerLayout   drawerLayout;
     private DrawerFragment drawerFragment;
     private Fragment       fragment;
-
+    
     @Override
     protected void onCreated() {
         setContentView(R.layout.activity_main);
+        
+        try {
+            FirebaseMessaging.getInstance().subscribeToTopic("public");
+            FirebaseMessaging.getInstance().subscribeToTopic("" + BuildConfig.VERSION_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         //        getExamples();
         startTime = System.currentTimeMillis() - 5000;
         if (App.preferences.getInt(APP_VERSION, 0) != BuildConfig.VERSION_CODE) {
-            SystemSetting setting = SystemSettings.getCurrentSettings();
+            SystemSetting setting = SystemSettings.getCurrentSettings(this);
             setting.setInstalled(false);
             SharedPreferences.Editor editor = App.preferences.edit();
             editor.putString(ReminderManager.REMINDER_SETTINGS, null);
             editor.putInt(APP_VERSION, BuildConfig.VERSION_CODE);
             editor.apply();
         }
-
-        WebApiClient.sendUserData(this);
-
-        if (App.preferences.getBoolean("RATED", false) == false) {
+        
+        new Webservice().callCheckForUpdate(this);
+        
+        if (!App.preferences.getBoolean("RATED", false)) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
         }
-
-        if (App.preferences.getBoolean("SCHEDULED", false) == false) {
+        
+        if (!App.preferences.getBoolean("SCHEDULED", false)) {
             App.preferences.edit().putInt("APP_RUN_COUNT_FOR_SCHEDULE", App.preferences.getInt("APP_RUN_COUNT_FOR_SCHEDULE", 0) + 1).apply();
         }
     }
-
+    
     @Override
     protected void onToolbarCreated() {
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -77,14 +84,14 @@ public class MainActivity extends EnhancedActivity {
         drawerFragment.setMenuVisibility(true);
         displayView(0);
     }
-
+    
     @Override
     protected void onResume() {
         super.onResume();
-
+        
         int runCountForSchedule = App.preferences.getInt("APP_RUN_COUNT_FOR_SCHEDULE", 0);
         boolean scheduled = App.preferences.getBoolean("SCHEDULED", false);
-        if (runCountForSchedule != 0 && runCountForSchedule % 3 == 0 && scheduled == false && ReminderManager.getReminderSettings().getStatus() == ReminderSettings.Status.STOP) {
+        if (runCountForSchedule != 0 && runCountForSchedule % 3 == 0 && !scheduled && ReminderManager.getReminderSettings().getStatus() == ReminderSettings.Status.STOP) {
             DialogManager.getPopupDialog(this, "Start Scheduler", "You have not set any reminder yet, Would you like to try it?", "Set it Now", "Remind me Later", null, () -> {
                 App.preferences.edit().putBoolean("SCHEDULED", true).apply();
                 Intent intent = new Intent(MainActivity.this, SchedulerActivity.class);
@@ -93,10 +100,10 @@ public class MainActivity extends EnhancedActivity {
                 //do nothing
             }).show();
         }
-
+        
         int runCount = App.preferences.getInt("APP_RUN_COUNT", 0);
         boolean rated = App.preferences.getBoolean("RATED", false);
-        if (runCount != 0 && runCount % 5 == 0 && rated == false) {
+        if (runCount != 0 && runCount % 5 == 0 && !rated) {
             App.preferences.edit().putInt("APP_RUN_COUNT", App.preferences.getInt("APP_RUN_COUNT", 0) + 1).apply();
             Dialog dialog = DialogManager.getPopupDialog(this, "Rate App", "If " + getString(R.string.app_name) + " is useful to you, would you like to rate?", "Yes, I rate it", "Not now!", null, () -> Helper.rateApp(MainActivity.this), () -> {
                 //do nothing
@@ -104,51 +111,50 @@ public class MainActivity extends EnhancedActivity {
             dialog.show();
         }
     }
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         final SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        final SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat.OnActionExpandListener() {
+        
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                return true;  // Return true to expand action view
+            }
+            
             @Override
             public boolean onMenuItemActionCollapse(MenuItem item) {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
                 displayView(0);
                 return true;  // Return true to collapse action view
             }
-
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                return true;  // Return true to expand action view
-            }
         });
-
+        
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
-
+            
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (fragment != null && fragment instanceof SearchFragment) {
+                if (fragment instanceof SearchFragment) {
                     ((SearchFragment) fragment).search(newText);
                 }
                 return false;
             }
         });
-
+        
         searchView.setOnSearchClickListener(v -> displayView(1));
-
+        
         return true;
     }
-
+    
     private void displayView(int position) {
         fragment = null;
         String title = getString(R.string.app_name);
@@ -164,21 +170,21 @@ public class MainActivity extends EnhancedActivity {
             default:
                 break;
         }
-
+        
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment, title);
             //fragmentTransaction.addToBackStack(title);
             fragmentTransaction.commit();
-
+            
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.setTitle(title);
             }
         }
     }
-
+    
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -190,7 +196,7 @@ public class MainActivity extends EnhancedActivity {
             super.onBackPressed();
         }
     }
-
+    
     //public void getExamples(){
     //    ArrayList<Vocabulary> vocabularies= Vocabularies.select();
     //

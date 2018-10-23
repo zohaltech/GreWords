@@ -3,16 +3,16 @@ package com.zohaltech.app.grewords.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.classes.App;
 
 public class SplashActivity extends AppCompatActivity {
-
-    ImageView imgSplashBorder;
+    
+    AppCompatImageView imgSplashBorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

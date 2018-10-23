@@ -1,23 +1,26 @@
 package com.zohaltech.app.grewords.data;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.provider.Settings;
 
-import com.zohaltech.app.grewords.classes.App;
 import com.zohaltech.app.grewords.classes.CsvReader;
 
 import java.io.InputStreamReader;
 
 public class DataAccess extends SQLiteOpenHelper {
+    
+    private             Context context;
     public static final String DATABASE_NAME    = "GRE_WORDS";
     public static final int    DATABASE_VERSION = 7;
-
-    public DataAccess() {
-        super(App.context, DATABASE_NAME, null, DATABASE_VERSION);
+    
+    public DataAccess(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -37,9 +40,9 @@ public class DataAccess extends SQLiteOpenHelper {
             systemSettingsValues.put(SystemSettings.VibrateInAlarms, 0);
             systemSettingsValues.put(SystemSettings.SoundInAlarms, 0);
             systemSettingsValues.put(SystemSettings.RingingToneUri, Settings.System.DEFAULT_NOTIFICATION_URI.getPath());
-            Ringtone ringtone = RingtoneManager.getRingtone(App.context, Settings.System.DEFAULT_NOTIFICATION_URI);
+            Ringtone ringtone = RingtoneManager.getRingtone(context, Settings.System.DEFAULT_NOTIFICATION_URI);
             if (ringtone != null) {
-                systemSettingsValues.put(SystemSettings.AlarmRingingTone, ringtone.getTitle(App.context));
+                systemSettingsValues.put(SystemSettings.AlarmRingingTone, ringtone.getTitle(context));
             } else {
                 systemSettingsValues.put(SystemSettings.AlarmRingingTone, "Default");
             }
@@ -117,7 +120,7 @@ public class DataAccess extends SQLiteOpenHelper {
     private void insertDataFromAsset(SQLiteDatabase db, String tableName, String filePathFromAsset, char delimiter) {
         InputStreamReader isr;
         try {
-            isr = new InputStreamReader(App.context.getAssets().open(filePathFromAsset), "UTF-8");
+            isr = new InputStreamReader(context.getAssets().open(filePathFromAsset), "UTF-8");
 
             CsvReader csvReader = new CsvReader(isr, delimiter);
             csvReader.readHeaders();

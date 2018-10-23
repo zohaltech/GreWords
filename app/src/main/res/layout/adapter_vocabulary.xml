@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp">
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/layoutVocabulary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,13 +25,13 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/primary_text"/>
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/imgLearned"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:src="@drawable/ic_done_green"/>
+            app:srcCompat="@drawable/done_green"/>
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.v7.widget.CardView>

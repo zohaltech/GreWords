@@ -10,7 +10,6 @@
 
     <application
         android:name="com.zohaltech.app.grewords.classes.App"
-        android:allowBackup="true"
         android:supportsRtl="false"
         android:icon="@mipmap/ic_launcher"
         android:label="GRE Vocabs"
@@ -45,6 +44,7 @@
         <activity
             android:name="com.zohaltech.app.grewords.activities.BookmarksActivity"
             android:screenOrientation="portrait"/>
+
         <receiver android:name="com.zohaltech.app.grewords.classes.AlarmReceiver"/>
         <receiver
             android:name="com.zohaltech.app.grewords.classes.BootReceiver"
@@ -60,6 +60,30 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".services.DownloaderService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":downloader_service"/>
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths"/>
+        </provider>
+
 
     </application>
 

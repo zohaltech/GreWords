@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "766561276914",
+    "firebase_url": "https://sigma-db68b.firebaseio.com",
+    "project_id": "sigma-db68b",
+    "storage_bucket": "sigma-db68b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766561276914:android:9b9f058f68321f80",
+        "android_client_info": {
+          "package_name": "com.zohaltech.app.grewords"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766561276914-05gd7gl1jn0pev36r7gj2oip7hgrbmtt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zohaltech.app.grewords",
+            "certificate_hash": "70627202228771e807e7201b493a073619b7af43"
+          }
+        },
+        {
+          "client_id": "766561276914-72bm3s9qa1knub7aof0o2g6rdotd8erc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zohaltech.app.grewords",
+            "certificate_hash": "78f9fc91a75889db4119580367de40d42eccd08a"
+          }
+        },
+        {
+          "client_id": "766561276914-11vdjkb85aincjkrludb807me9198l0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZH2cWkYOYGKKped1sEERoPAGES9KBDGg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766561276914-11vdjkb85aincjkrludb807me9198l0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766561276914:android:48ea2f0baab71c95",
+        "android_client_info": {
+          "package_name": "com.zohaltech.app.sigma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766561276914-le2aorpthe7uq614me66tedgb37j41kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zohaltech.app.sigma",
+            "certificate_hash": "70627202228771e807e7201b493a073619b7af43"
+          }
+        },
+        {
+          "client_id": "766561276914-soqnvgb4akotajn5br211mqfje9deel1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zohaltech.app.sigma",
+            "certificate_hash": "01774937816d6588217ca2c68225a020f6d602b6"
+          }
+        },
+        {
+          "client_id": "766561276914-11vdjkb85aincjkrludb807me9198l0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZH2cWkYOYGKKped1sEERoPAGES9KBDGg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766561276914-11vdjkb85aincjkrludb807me9198l0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

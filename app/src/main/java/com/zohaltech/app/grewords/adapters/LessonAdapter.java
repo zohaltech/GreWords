@@ -2,13 +2,14 @@ package com.zohaltech.app.grewords.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zohaltech.app.grewords.R;
@@ -23,10 +24,10 @@ import widgets.CircleProgress;
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
 
     private static final long DURATION = 300;
-
-    Activity activity;
-    ArrayList<Integer> lessons = new ArrayList<>();
-    ArrayList<ProgressDetailStatus> progressDetailStatuses;
+    
+    private Activity                        activity;
+    private ArrayList<Integer>              lessons;
+    private ArrayList<ProgressDetailStatus> progressDetailStatuses;
 
     public LessonAdapter(Activity activity, ArrayList<Integer> lessons) {
         this.activity = activity;
@@ -36,8 +37,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             progressDetailStatuses.add(new ProgressDetailStatus(i, false));
         }
     }
-
-    public static void expand(final View v) {
+    
+    private static void expand(final View v) {
         v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         final int targetHeight = v.getMeasuredHeight();
 
@@ -89,27 +90,28 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         a.setDuration(DURATION);
         v.startAnimation(a);
     }
-
+    
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(activity).inflate(R.layout.adapter_lesson, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final int lesson = lessons.get(position);
         holder.txtLessonNumber.setText("" + lesson);
         holder.txtLesson.setText("Lesson " + lesson);
 
         holder.layoutRoot.setOnClickListener(v -> {
-            Intent intent = new Intent(App.currentActivity, VocabulariesActivity.class);
+            Intent intent = new Intent(activity, VocabulariesActivity.class);
             intent.putExtra(VocabulariesActivity.LESSON, lesson);
-            App.currentActivity.startActivity(intent);
+            activity.startActivity(intent);
         });
         holder.layoutProgressDetail.setVisibility(View.GONE);
-
-        LearningStatus status = LearningStatus.getLearningStatusByLesson(lesson);
+    
+        LearningStatus status = LearningStatus.getLearningStatusByLesson(activity, lesson);
         if (status != null) {
             holder.layoutDivider.setVisibility(View.VISIBLE);
             holder.layoutCircleProgress.setVisibility(View.VISIBLE);
@@ -145,12 +147,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
     @Override
-    public void onViewAttachedToWindow(ViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
@@ -160,16 +162,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public LinearLayout   layoutRoot;
-        public TextView       txtLessonNumber;
-        public TextView       txtLesson;
-        public CircleProgress circleProgress;
-        public LinearLayout   layoutDivider;
-        public LinearLayout   layoutCircleProgress;
-        public LinearLayout   layoutProgressDetail;
-        public TextView       txtVocabProgress;
-
-        public ViewHolder(View view) {
+        public LinearLayoutCompat layoutRoot;
+        public TextView           txtLessonNumber;
+        public TextView           txtLesson;
+        public CircleProgress     circleProgress;
+        public LinearLayoutCompat layoutDivider;
+        public LinearLayoutCompat layoutCircleProgress;
+        public LinearLayoutCompat layoutProgressDetail;
+        public TextView           txtVocabProgress;
+    
+        ViewHolder(View view) {
             super(view);
             layoutRoot = view.findViewById(R.id.layoutRoot);
             txtLessonNumber = view.findViewById(R.id.txtLessonNumber);
@@ -185,8 +187,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     private class ProgressDetailStatus {
         public int     position;
         public boolean visible;
-
-        public ProgressDetailStatus(int position, boolean visible) {
+    
+        ProgressDetailStatus(int position, boolean visible) {
             this.position = position;
             this.visible = visible;
         }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:app="http://schemas.android.com/apk/res-auto"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"/>
 
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -21,17 +22,17 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_app_about"/>
+            android:src="@drawable/app_about"/>
 
         <widgets.LatinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/primary_text"
             android:textStyle="bold"
             android:layout_marginTop="10dp"/>
@@ -41,11 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="version 1.0"
-            android:textColor="@color/primary_text"/>
+            android:textColor="@color/secondary_text"/>
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -59,7 +60,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/ic_share"
+            android:drawableTop="@drawable/share"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="SHARE"/>
@@ -72,7 +73,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/ic_products"
+            android:drawableTop="@drawable/products"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="PRODUCTS"/>
@@ -85,7 +86,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/ic_feedback"
+            android:drawableTop="@drawable/feedback"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="FEEDBACK"/>
@@ -98,15 +99,15 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/ic_rate"
+            android:drawableTop="@drawable/rate"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="RATE"/>
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/layoutWebsite"
         style="@style/BorderlessButton"
         android:layout_width="match_parent"
@@ -116,16 +117,16 @@
         android:gravity="center"
         android:padding="10dp">
 
-        <LinearLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_zohaltech"/>
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:srcCompat="@drawable/zohaltech"/>
 
             <widgets.LatinTextView
                 android:layout_width="wrap_content"
@@ -138,18 +139,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/copyright"
-                android:textColor="@color/primary_text"
-                android:textSize="10sp"/>
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp"/>
 
             <widgets.LatinTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/all_rights"
-                android:textColor="@color/primary_text"
-                android:textSize="10sp"/>
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp"/>
 
-        </LinearLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
-</LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>

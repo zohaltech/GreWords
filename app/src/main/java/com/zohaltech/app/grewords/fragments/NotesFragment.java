@@ -29,10 +29,10 @@ import widgets.MySnackbar;
 
 public class NotesFragment extends Fragment {
     public static final String VOCAB_ID = "VOCAB_ID";
-
+    
     int             vocabId;
     ArrayList<Note> notes;
-
+    
     public static NotesFragment newInstance(int vocabId) {
         Bundle args = new Bundle();
         args.putInt(VOCAB_ID, vocabId);
@@ -40,12 +40,12 @@ public class NotesFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
@@ -55,16 +55,16 @@ public class NotesFragment extends Fragment {
         recyclerNotes.setHasFixedSize(true);
         recyclerNotes.setLayoutManager(new LinearLayoutManager(getActivity()));
         vocabId = getArguments().getInt(VOCAB_ID);
-        notes = Notes.getNotes(vocabId);
-        final NoteAdapter adapter = new NoteAdapter(getActivity(), notes,fabAddNote);
+        notes = Notes.getNotes(getActivity(), vocabId);
+        final NoteAdapter adapter = new NoteAdapter(getActivity(), notes, fabAddNote);
         recyclerNotes.setAdapter(adapter);
-
+        
         recyclerNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
             }
-
+            
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -76,7 +76,7 @@ public class NotesFragment extends Fragment {
                 }
             }
         });
-
+        
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
@@ -88,9 +88,9 @@ public class NotesFragment extends Fragment {
                 }
             }
         });
-
+        
         adapter.notifyDataSetChanged();
-
+        
         fabAddNote.setOnClickListener(v -> {
             final Dialog dialog = new Dialog(getActivity());
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -100,13 +100,13 @@ public class NotesFragment extends Fragment {
             final EditText edtNote = dialog.findViewById(R.id.edtNote);
             Button btnSubmit = dialog.findViewById(R.id.btnSubmit);
             Button btnCancel = dialog.findViewById(R.id.btnCancel);
-
+            
             dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-
+            
             btnSubmit.setOnClickListener(v12 -> {
                 if (edtNote.getText().toString().trim().length() > 0) {
                     Note note = new Note(vocabId, 1, edtNote.getText().toString());
-                    long id = Notes.insert(note);
+                    long id = Notes.insert(getActivity(), note);
                     if (id > 0) {
                         note.setId(id);
                         notes.add(note);
@@ -119,11 +119,11 @@ public class NotesFragment extends Fragment {
                     MySnackbar.show(edtNote, "Please enter a note!", Snackbar.LENGTH_SHORT);
                 }
             });
-
+            
             btnCancel.setOnClickListener(v1 -> dialog.dismiss());
             dialog.show();
         });
-
+        
         return view;
     }
 }

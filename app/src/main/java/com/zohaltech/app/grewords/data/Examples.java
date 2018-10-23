@@ -1,6 +1,7 @@
 package com.zohaltech.app.grewords.data;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -15,37 +16,37 @@ public class Examples {
     //    static final String Ordinal      = "Ordinal";
     static final String Synonyms     = "Synonyms";
     static final String Opposites    = "Opposites";
-
-
+    
+    
     static final String CreateTable = "CREATE TABLE " + TableName + " ( " +
-                                      Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                                      VocabularyId + " INTEGER , " +
-                                      //                                      Ordinal + " INTEGER , " +
-                                      Opposites + " VARCHAR(1024) , " +
-                                      Synonyms + " VARCHAR(1024));";
-
+            Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+            VocabularyId + " INTEGER , " +
+            //                                      Ordinal + " INTEGER , " +
+            Opposites + " VARCHAR(1024) , " +
+            Synonyms + " VARCHAR(1024));";
+    
     static final String DropTable = "Drop Table If Exists " + TableName;
-
-    public static ArrayList<Example> select() {
-        return select("", null);
+    
+    public static ArrayList<Example> select(Context context) {
+        return select(context, "", null);
     }
-
-    private static ArrayList<Example> select(String whereClause, String[] selectionArgs) {
+    
+    private static ArrayList<Example> select(Context context, String whereClause, String[] selectionArgs) {
         ArrayList<Example> examples = new ArrayList<>();
-        DataAccess da = new DataAccess();
+        DataAccess da = new DataAccess(context);
         SQLiteDatabase db = da.getReadableDB();
         Cursor cursor = null;
-
+        
         try {
             String query = "Select * From " + TableName + " " + whereClause;
             cursor = db.rawQuery(query, selectionArgs);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     Example example = new Example(cursor.getInt(cursor.getColumnIndex(Id)),
-                                                  cursor.getInt(cursor.getColumnIndex(VocabularyId)),
-                                                  cursor.getString(cursor.getColumnIndex(Synonyms)),
-                                                  cursor.getString(cursor.getColumnIndex(Opposites)));
-
+                            cursor.getInt(cursor.getColumnIndex(VocabularyId)),
+                            cursor.getString(cursor.getColumnIndex(Synonyms)),
+                            cursor.getString(cursor.getColumnIndex(Opposites)));
+                    
                     examples.add(example);
                 } while (cursor.moveToNext());
             }
@@ -59,30 +60,30 @@ public class Examples {
         }
         return examples;
     }
-
-    public static long insert(Example example) {
-        DataAccess da = new DataAccess();
-        return da.insert(TableName, getContentValues(example));
-    }
-
-    public static long update(Example example) {
-        DataAccess da = new DataAccess();
-        return da.update(TableName, getContentValues(example), Id + " =? ", new String[]{String.valueOf(example.getId())});
-    }
-
+    
+    //public static long insert(Example example) {
+    //    DataAccess da = new DataAccess();
+    //    return da.insert(TableName, getContentValues(example));
+    //}
+    //
+    //public static long update(Example example) {
+    //    DataAccess da = new DataAccess();
+    //    return da.update(TableName, getContentValues(example), Id + " =? ", new String[]{String.valueOf(example.getId())});
+    //}
+    
     public static ContentValues getContentValues(Example example) {
         ContentValues values = new ContentValues();
-
+    
         values.put(VocabularyId, example.getVocabularyId());
         //        values.put(Ordinal, example.getOrdinal());
         values.put(Synonyms, example.getSynonyms());
         values.put(Opposites, example.getOpposites());
-
+    
         return values;
     }
-
-    public static ArrayList<Example> getExamples(int vocabId) {
+    
+    public static ArrayList<Example> getExamples(Context context, int vocabId) {
         String whereClause = " Where " + VocabularyId + " = " + vocabId;
-        return select(whereClause, null);
+        return select(context, whereClause, null);
     }
 }

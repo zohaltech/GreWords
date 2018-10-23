@@ -1,6 +1,7 @@
 package com.zohaltech.app.grewords.data;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -14,30 +15,30 @@ public class Notes {
     static final String VocabularyId = "VocabularyId";
     static final String Ordinal      = "Ordinal";
     static final String Description  = "Description";
-
+    
     static final String CreateTable = "CREATE TABLE " + TableName + " ( " +
-                                      Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                                      VocabularyId + " INTEGER , " +
-                                      Ordinal + " INTEGER , " +
-                                      Description + " VARCHAR(512));";
+            Id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+            VocabularyId + " INTEGER , " +
+            Ordinal + " INTEGER , " +
+            Description + " VARCHAR(512));";
     static final String DropTable   = "Drop Table If Exists " + TableName;
-
-    private static ArrayList<Note> select(String whereClause, String[] selectionArgs) {
+    
+    private static ArrayList<Note> select(Context context, String whereClause, String[] selectionArgs) {
         ArrayList<Note> noteList = new ArrayList<>();
-        DataAccess da = new DataAccess();
+        DataAccess da = new DataAccess(context);
         SQLiteDatabase db = da.getReadableDB();
         Cursor cursor = null;
-
+        
         try {
             String query = "Select * From " + TableName + " " + whereClause;
             cursor = db.rawQuery(query, selectionArgs);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     Note note = new Note(cursor.getInt(cursor.getColumnIndex(Id)),
-                                         cursor.getInt(cursor.getColumnIndex(VocabularyId)),
-                                         cursor.getInt(cursor.getColumnIndex(Ordinal)),
-                                         cursor.getString(cursor.getColumnIndex(Description)).replace('|', '\n'));
-
+                            cursor.getInt(cursor.getColumnIndex(VocabularyId)),
+                            cursor.getInt(cursor.getColumnIndex(Ordinal)),
+                            cursor.getString(cursor.getColumnIndex(Description)).replace('|', '\n'));
+                    
                     noteList.add(note);
                 } while (cursor.moveToNext());
             }
@@ -51,38 +52,38 @@ public class Notes {
         }
         return noteList;
     }
-
-    public static ArrayList<Note> select() {
-        return select("", null);
+    
+    public static ArrayList<Note> select(Context context) {
+        return select(context, "", null);
     }
-
-    public static long insert(Note note) {
-        DataAccess da = new DataAccess();
+    
+    public static long insert(Context context, Note note) {
+        DataAccess da = new DataAccess(context);
         return da.insert(TableName, getContentValues(note));
     }
-
-    public static long update(Note note) {
-        DataAccess da = new DataAccess();
+    
+    public static long update(Context context, Note note) {
+        DataAccess da = new DataAccess(context);
         return da.update(TableName, getContentValues(note), Id + " =? ", new String[]{String.valueOf(note.getId())});
     }
-
-    public static long delete(Note note) {
-        DataAccess da = new DataAccess();
+    
+    public static long delete(Context context, Note note) {
+        DataAccess da = new DataAccess(context);
         return da.delete(TableName, Id + " =? ", new String[]{String.valueOf(note.getId())});
     }
-
+    
     public static ContentValues getContentValues(Note note) {
         ContentValues values = new ContentValues();
-
+        
         values.put(VocabularyId, note.getVocabularyId());
         values.put(Ordinal, note.getOrdinal());
         values.put(Description, note.getDescription());
-
+        
         return values;
     }
-
-    public static ArrayList<Note> getNotes(int vocabId) {
+    
+    public static ArrayList<Note> getNotes(Context context, int vocabId) {
         String whereClause = " WHERE " + VocabularyId + " = " + vocabId;
-        return select(whereClause, null);
+        return select(context, whereClause, null);
     }
 }

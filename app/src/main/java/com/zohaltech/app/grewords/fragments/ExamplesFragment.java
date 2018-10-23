@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.adapters.ExampleAdapter;
 import com.zohaltech.app.grewords.data.Examples;
 import com.zohaltech.app.grewords.entities.Example;
 
 import java.util.ArrayList;
-
-import com.zohaltech.app.grewords.R;
 
 public class ExamplesFragment extends Fragment {
     public static final String VOCAB_ID = "VOCAB_ID";
@@ -41,7 +39,7 @@ public class ExamplesFragment extends Fragment {
         recyclerExamples.setHasFixedSize(true);
         recyclerExamples.setLayoutManager(new LinearLayoutManager(getActivity()));
         int vocabId = getArguments().getInt(VOCAB_ID);
-        ArrayList<Example> examples = Examples.getExamples(vocabId);
+        ArrayList<Example> examples = Examples.getExamples(getActivity(), vocabId);
         ExampleAdapter adapter = new ExampleAdapter(getActivity(), examples);
         recyclerExamples.setAdapter(adapter);
         return view;

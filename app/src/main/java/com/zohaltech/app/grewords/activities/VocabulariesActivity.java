@@ -26,8 +26,8 @@ public class VocabulariesActivity extends EnhancedActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerVocabularies.setLayoutManager(layoutManager);
         lesson = getIntent().getIntExtra(LESSON, 0);
-        ArrayList<Vocabulary> vocabularies = Vocabularies.selectByLesson(lesson);
-        VocabularyAdapter adapter = new VocabularyAdapter(this, vocabularies, true);
+        ArrayList<Vocabulary> vocabularies = Vocabularies.selectByLesson(this, lesson);
+        VocabularyAdapter adapter = new VocabularyAdapter(this, vocabularies);
         recyclerVocabularies.setAdapter(adapter);
     }
 

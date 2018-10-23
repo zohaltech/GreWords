@@ -6,12 +6,12 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import com.zohaltech.app.grewords.R;
 
-public class CircleProgress extends ImageView {
+public class CircleProgress extends AppCompatImageView {
 
     private static final int START_ANGLE = 90;
     private static final int SWEEP_ANGLE = 360;

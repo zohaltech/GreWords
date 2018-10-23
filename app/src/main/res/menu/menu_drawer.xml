@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_scheduler"
-        android:icon="@drawable/ic_scheduler"
+        android:icon="@drawable/ic_notifications"
         android:title="Scheduler"/>
     <item
         android:id="@+id/nav_bookmarks"
-        android:icon="@drawable/ic_bookmark"
+        android:icon="@drawable/bookmark_empty"
         android:title="Bookmarks"/>
     <item
         android:id="@+id/nav_help"
-        android:icon="@drawable/ic_intro"
+        android:icon="@drawable/ic_help"
         android:title="Introduction"/>
     <item
         android:id="@+id/nav_about"
-        android:icon="@drawable/ic_about"
+        android:icon="@drawable/ic_info"
         android:title="About"/>
 </menu>

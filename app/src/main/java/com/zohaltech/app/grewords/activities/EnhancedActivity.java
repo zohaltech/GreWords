@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import com.zohaltech.app.grewords.classes.App;
-import com.zohaltech.app.grewords.R;
 
+import com.zohaltech.app.grewords.R;
 
 public abstract class EnhancedActivity extends AppCompatActivity {
 
@@ -18,8 +17,6 @@ public abstract class EnhancedActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
         super.onCreate(savedInstanceState);
 
-        App.currentActivity = this;
-
         onCreated();
         onInitialized();
         onToolbarCreated();
@@ -28,12 +25,6 @@ public abstract class EnhancedActivity extends AppCompatActivity {
     private void onInitialized() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        App.currentActivity = this;
     }
 
     @Override
