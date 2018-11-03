@@ -1,13 +1,15 @@
 package com.zohaltech.app.grewords.activities;
 
 
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -34,32 +36,33 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
     private static final int    TAB_COUNT     = 3;
     LinearLayoutCompat      layoutRoot;
     TextView                txtVocabulary;
-    CheckBox                chkBookmark;
+    AppCompatCheckBox       chkBookmark;
     PagerSlidingTabStrip    tabCategories;
     ViewPager               pagerCategories;
     DescriptionPagerAdapter descriptionPagerAdapter;
     ArrayList<Example>      examples;
     ArrayList<Note>         notes;
     Vocabulary              vocabulary;
-
+    
     @Override
     protected void onCreated() {
         setContentView(R.layout.activity_vocabulary_details);
-
+        
         layoutRoot = findViewById(R.id.layoutRoot);
         txtVocabulary = findViewById(R.id.txtVocabulary);
         chkBookmark = findViewById(R.id.chkBookmark);
         tabCategories = findViewById(R.id.tabDescriptions);
         pagerCategories = findViewById(R.id.pagerDescItems);
-
+        
         int vocabularyId = getIntent().getIntExtra(VOCAB_ID, 0);
-    
+        
         vocabulary = Vocabularies.select(this, vocabularyId);
         assert vocabulary != null;
         txtVocabulary.setText(vocabulary.getVocabulary());
-
+    
+        Drawable drawable = ContextCompat.getDrawable(this, R.drawable.bookmark);
+        chkBookmark.setCompoundDrawablesWithIntrinsicBounds( null, drawable, null, null);
         chkBookmark.setChecked(vocabulary.getBookmarked());
-
         chkBookmark.setOnCheckedChangeListener((buttonView, isChecked) -> {
             boolean bookmarked = chkBookmark.isChecked();
             vocabulary.setBookmarked(bookmarked);
@@ -71,47 +74,47 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
                 }
             }
         });
-    
+        
         examples = Examples.getExamples(this, vocabularyId);
         notes = Notes.getNotes(this, vocabularyId);
-
+        
         ArrayList<String> tabTitles = new ArrayList<>();
         tabTitles.add("MEANING");
         tabTitles.add("SYN/OPP");
         tabTitles.add("NOTES");
-
+        
         descriptionPagerAdapter = new DescriptionPagerAdapter(getSupportFragmentManager(), tabTitles, vocabularyId);
         pagerCategories.setAdapter(descriptionPagerAdapter);
-
+        
         // Bind the tabCategories to the ViewPager
         tabCategories.setViewPager(pagerCategories);
-
+        
         pagerCategories.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
-
+            
             @Override
             public void onPageSelected(int position) {
                 changeTabTitleColors(position);
             }
-
+            
             @Override
             public void onPageScrollStateChanged(int state) {
             }
         });
-
+        
         changeTabsFont();
         changeTabTitleColors(0);
     }
-
+    
     private void changeTabTitleColors(int position) {
         ((TextView) ((ViewGroup) tabCategories.getChildAt(0)).getChildAt(0)).setTextColor(getResources().getColor(R.color.secondary_text));
         ((TextView) ((ViewGroup) tabCategories.getChildAt(0)).getChildAt(1)).setTextColor(getResources().getColor(R.color.secondary_text));
         ((TextView) ((ViewGroup) tabCategories.getChildAt(0)).getChildAt(2)).setTextColor(getResources().getColor(R.color.secondary_text));
         ((TextView) ((ViewGroup) tabCategories.getChildAt(0)).getChildAt(position)).setTextColor(getResources().getColor(R.color.primary_text));
     }
-
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -120,7 +123,7 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    
     @Override
     protected void onToolbarCreated() {
         ActionBar actionBar = getSupportActionBar();
@@ -130,7 +133,7 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
     }
-
+    
     private void changeTabsFont() {
         ViewGroup vg = (ViewGroup) tabCategories.getChildAt(0);
         int tabsCount = vg.getChildCount();
@@ -142,6 +145,6 @@ public class VocabularyDetailsActivity extends EnhancedActivity {
             textView.setTextSize(14);
         }
     }
-
-
+    
+    
 }

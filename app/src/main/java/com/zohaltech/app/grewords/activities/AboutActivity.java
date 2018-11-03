@@ -2,8 +2,10 @@ package com.zohaltech.app.grewords.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.view.MenuItem;
@@ -14,6 +16,8 @@ import com.zohaltech.app.grewords.BuildConfig;
 import com.zohaltech.app.grewords.R;
 import com.zohaltech.app.grewords.classes.App;
 import com.zohaltech.app.grewords.classes.Helper;
+
+import java.text.MessageFormat;
 
 import widgets.MySnackbar;
 
@@ -30,16 +34,18 @@ public class AboutActivity extends EnhancedActivity {
     @Override
     protected void onCreated() {
         setContentView(R.layout.activity_about);
-    
+        
         txtVersion = findViewById(R.id.txtVersion);
         btnShare = findViewById(R.id.btnShare);
         btnProducts = findViewById(R.id.btnProducts);
         btnFeedback = findViewById(R.id.btnFeedback);
         btnRate = findViewById(R.id.btnRate);
         layoutWebsite = findViewById(R.id.layoutWebsite);
-    
-        txtVersion.setText("Version " + BuildConfig.VERSION_NAME);
-    
+        
+        txtVersion.setText(MessageFormat.format("Version {0}", BuildConfig.VERSION_NAME));
+        
+        Drawable drawable1 = ContextCompat.getDrawable(this, R.drawable.share);
+        btnShare.setCompoundDrawablesWithIntrinsicBounds(null, drawable1, null, null);
         btnShare.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SEND);
             String message = String.format(getResources().getString(R.string.sharing_message),
@@ -49,7 +55,9 @@ public class AboutActivity extends EnhancedActivity {
             intent.putExtra(Intent.EXTRA_TEXT, message);
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_title)));
         });
-    
+        
+        Drawable drawable2 = ContextCompat.getDrawable(this, R.drawable.products);
+        btnProducts.setCompoundDrawablesWithIntrinsicBounds(null, drawable2, null, null);
         btnProducts.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(App.marketDeveloperUri));
@@ -57,15 +65,19 @@ public class AboutActivity extends EnhancedActivity {
                 MySnackbar.show(layoutWebsite, String.format(getString(R.string.could_not_open_market), App.marketName), Snackbar.LENGTH_SHORT);
             }
         });
-    
+        
+        Drawable drawable3 = ContextCompat.getDrawable(this, R.drawable.share);
+        btnFeedback.setCompoundDrawablesWithIntrinsicBounds(null, drawable3, null, null);
         btnFeedback.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "info@zohaltech.com", null));
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.feedback_subject));
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.feedback_title)));
         });
-    
+        
+        Drawable drawable4 = ContextCompat.getDrawable(this, R.drawable.rate);
+        btnRate.setCompoundDrawablesWithIntrinsicBounds(null, drawable4, null, null);
         btnRate.setOnClickListener(v -> Helper.rateApp(AboutActivity.this));
-    
+        
         layoutWebsite.setOnClickListener(v -> {
             if (App.market == App.MARKET_PLAY) {
                 Helper.goToWebsite(this, "http://zohaltech.com/en/index.html");

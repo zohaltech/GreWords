@@ -28,14 +28,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/primary_dark"/>
 
-        <widgets.MyCheckBox
+        <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/chkBookmark"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:button="@null"
             android:gravity="center"
-            android:drawableTop="@drawable/bookmark"
             android:padding="5dp"/>
 
     </android.support.v7.widget.LinearLayoutCompat>

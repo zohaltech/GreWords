@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-                                              xmlns:tools="http://schemas.android.com/tools"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent"
-                                              android:orientation="vertical">
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
@@ -29,7 +30,6 @@
                     android:id="@+id/btnStart"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/start"
                     android:text="Start"
                     tools:ignore="HardcodedText"/>
 
@@ -37,7 +37,6 @@
                     android:id="@+id/btnPause"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/pause"
                     android:text="Pause"
                     tools:ignore="HardcodedText"/>
 
@@ -45,7 +44,6 @@
                     android:id="@+id/btnStop"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/stop"
                     android:text="Stop"
                     tools:ignore="HardcodedText"/>
 
@@ -53,7 +51,6 @@
                     android:id="@+id/btnRestart"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/restart"
                     android:text="RESTART"
                     tools:ignore="HardcodedText"/>
 
@@ -92,8 +89,8 @@
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@android:drawable/divider_horizontal_bright"/>
 
                     <TableRow
@@ -118,8 +115,8 @@
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@android:drawable/divider_horizontal_bright"/>
 
                     <TableRow
@@ -147,8 +144,8 @@
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@android:drawable/divider_horizontal_bright"/>
 
                     <TableRow
@@ -188,8 +185,8 @@
                         android:id="@+id/layoutRingtone"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@android:drawable/divider_horizontal_bright"
                         android:orientation="horizontal"/>
 
@@ -219,8 +216,8 @@
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:background="@android:drawable/divider_horizontal_bright"/>
 
                     <widgets.LatinTextView
@@ -243,8 +240,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="SU"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -259,8 +256,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="MO"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -275,8 +272,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="TU"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -291,8 +288,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="WE"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -307,8 +304,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="TH"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -323,8 +320,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="FR"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"
@@ -339,8 +336,8 @@
                             android:background="?attr/selectableItemBackground"
                             android:button="@null"
                             android:gravity="center"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
                             android:text="SA"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@drawable/day"

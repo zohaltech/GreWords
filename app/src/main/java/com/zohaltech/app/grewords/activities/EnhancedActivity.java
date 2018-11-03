@@ -2,13 +2,18 @@ package com.zohaltech.app.grewords.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.zohaltech.app.grewords.R;
 
 public abstract class EnhancedActivity extends AppCompatActivity {
-
+    
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+    
     Toolbar toolbar;
     //TextView txtToolbarTitle;
 

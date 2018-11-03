@@ -43,17 +43,24 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        persianFont = Typeface.createFromAsset(getAssets(), "fonts/byekan.ttf");
-        persianFontBold = Typeface.createFromAsset(getAssets(), "fonts/byekan.ttf");
+        persianFont = Typeface.createFromAsset(getAssets(), "fonts/iransans_light.ttf");
+        persianFontBold = Typeface.createFromAsset(getAssets(), "fonts/iransans_light.ttf");
         handler = new Handler();
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
         setAppLocal(this);
         
         //todo : set market here
-        setTargetMarket(MARKET_PLAY);
+        setTargetMarket(MARKET_BAZAAR);
         
         try {
+            for (int i = 106; i < BuildConfig.VERSION_CODE; i++) {
+                try {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("" + i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             FirebaseMessaging.getInstance().subscribeToTopic("public");
             FirebaseMessaging.getInstance().subscribeToTopic("" + BuildConfig.VERSION_CODE);
         } catch (Exception e) {

@@ -31,6 +31,8 @@ import com.zohaltech.app.grewords.fragments.LessonsFragment;
 import com.zohaltech.app.grewords.fragments.SearchFragment;
 import com.zohaltech.app.grewords.serializables.ReminderSettings;
 
+import java.util.Objects;
+
 import widgets.MySnackbar;
 
 
@@ -48,6 +50,13 @@ public class MainActivity extends EnhancedActivity {
         setContentView(R.layout.activity_main);
         
         try {
+            for (int i = 106; i < BuildConfig.VERSION_CODE; i++) {
+                try {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("" + i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             FirebaseMessaging.getInstance().subscribeToTopic("public");
             FirebaseMessaging.getInstance().subscribeToTopic("" + BuildConfig.VERSION_CODE);
         } catch (Exception e) {
@@ -58,7 +67,7 @@ public class MainActivity extends EnhancedActivity {
         startTime = System.currentTimeMillis() - 5000;
         if (App.preferences.getInt(APP_VERSION, 0) != BuildConfig.VERSION_CODE) {
             SystemSetting setting = SystemSettings.getCurrentSettings(this);
-            setting.setInstalled(false);
+            Objects.requireNonNull(setting).setInstalled(false);
             SharedPreferences.Editor editor = App.preferences.edit();
             editor.putString(ReminderManager.REMINDER_SETTINGS, null);
             editor.putInt(APP_VERSION, BuildConfig.VERSION_CODE);
@@ -80,7 +89,7 @@ public class MainActivity extends EnhancedActivity {
     protected void onToolbarCreated() {
         drawerLayout = findViewById(R.id.drawerLayout);
         drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(drawerLayout, toolbar);
+        Objects.requireNonNull(drawerFragment).setUp(drawerLayout, toolbar);
         drawerFragment.setMenuVisibility(true);
         displayView(0);
     }

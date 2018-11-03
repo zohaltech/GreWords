@@ -2,10 +2,12 @@ package com.zohaltech.app.grewords.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatSpinner;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import widgets.MyToast;
 
@@ -92,23 +95,32 @@ public class SchedulerActivity extends EnhancedActivity {
         txtStatus = findViewById(R.id.txtStatus);
         
         bind();
+        
+        Drawable drawable1 = ContextCompat.getDrawable(this, R.drawable.start);
+        btnStart.setCompoundDrawablesWithIntrinsicBounds(drawable1, null, null, null);
         btnStart.setOnClickListener(v -> {
             start();
             setViewsStatus();
         });
-        
+    
+        Drawable drawable2 = ContextCompat.getDrawable(this, R.drawable.pause);
+        btnPause.setCompoundDrawablesWithIntrinsicBounds(drawable2, null, null, null);
         btnPause.setOnClickListener(v -> {
             ReminderManager.pause(this);
             bind();
             setViewsStatus();
         });
-        
+    
+        Drawable drawable3 = ContextCompat.getDrawable(this, R.drawable.stop);
+        btnStop.setCompoundDrawablesWithIntrinsicBounds(drawable3, null, null, null);
         btnStop.setOnClickListener(v -> {
             ReminderManager.stop(this);
             bind();
             setViewsStatus();
         });
-        
+    
+        Drawable drawable4 = ContextCompat.getDrawable(this, R.drawable.restart);
+        btnRestart.setCompoundDrawablesWithIntrinsicBounds(drawable4, null, null, null);
         btnRestart.setOnClickListener(v -> {
             start();
             setViewsStatus();
@@ -158,7 +170,7 @@ public class SchedulerActivity extends EnhancedActivity {
             if (garbage.getTime() != null) {
                 reminderTime = garbage.getTime();
             }
-    
+            
             startVocabId = garbage.getVocabularyId();
         }
         Vocabulary vocabulary = Vocabularies.select(this, startVocabId);
@@ -276,7 +288,7 @@ public class SchedulerActivity extends EnhancedActivity {
         chkSa.setChecked(days[6]);
         
         SystemSetting setting = SystemSettings.getCurrentSettings(this);
-        btnSelectTone.setText(setting.getAlarmRingingTone());
+        btnSelectTone.setText(Objects.requireNonNull(setting).getAlarmRingingTone());
     }
     
     private void setViewsStatus() {
@@ -371,11 +383,11 @@ public class SchedulerActivity extends EnhancedActivity {
             if (uri != null) {
                 Ringtone ringtone = RingtoneManager.getRingtone(this, uri);
                 String title = ringtone.getTitle(this);
-                setting.setRingingToneUri(uri.toString());
+                Objects.requireNonNull(setting).setRingingToneUri(uri.toString());
                 setting.setAlarmRingingTone(title);
                 btnSelectTone.setText(title);
             } else {
-                setting.setRingingToneUri(Settings.System.DEFAULT_NOTIFICATION_URI.getPath());
+                Objects.requireNonNull(setting).setRingingToneUri(Settings.System.DEFAULT_NOTIFICATION_URI.getPath());
                 Ringtone ringtone = RingtoneManager.getRingtone(this, Settings.System.DEFAULT_NOTIFICATION_URI);
                 setting.setAlarmRingingTone(ringtone.getTitle(this));
                 btnSelectTone.setText(ringtone.getTitle(this));

@@ -60,7 +60,6 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/share"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="SHARE"/>
@@ -73,7 +72,6 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/products"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="PRODUCTS"/>
@@ -86,7 +84,6 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/feedback"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="FEEDBACK"/>
@@ -99,7 +96,6 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackground"
             android:drawablePadding="5dp"
-            android:drawableTop="@drawable/rate"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:text="RATE"/>
