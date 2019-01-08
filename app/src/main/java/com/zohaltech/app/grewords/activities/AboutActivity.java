@@ -69,7 +69,7 @@ public class AboutActivity extends EnhancedActivity {
         Drawable drawable3 = ContextCompat.getDrawable(this, R.drawable.share);
         btnFeedback.setCompoundDrawablesWithIntrinsicBounds(null, drawable3, null, null);
         btnFeedback.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "info@zohaltech.com", null));
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "zohaltech@gmail.com", null));
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.feedback_subject));
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.feedback_title)));
         });
